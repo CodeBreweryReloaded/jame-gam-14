@@ -16,7 +16,13 @@
             "request": "launch",
             "mode": "executable",
             "preLaunchTask": "build",
-            "executable": "/opt/godot-mono-bin/godot/Godot_v3.5.1-stable_mono_x11.64",
+            "executable": "godot-mono",
+            "windows": {
+                "name": "",
+                "type": "godot-mono",
+                "request": "launch",
+                "executable": "godot"
+            },
             "executableArguments": [
                 "--path",
                 "${workspaceRoot}"
@@ -28,7 +34,13 @@
             "request": "launch",
             "mode": "executable",
             "preLaunchTask": "build",
-            "executable": "/opt/godot-mono-bin/godot/Godot_v3.5.1-stable_mono_x11.64",
+            "executable": "godot-mono",
+            "windows": {
+                "name": "",
+                "type": "godot-mono",
+                "request": "launch",
+                "executable": "godot"
+            },
             "executableArguments": [
                 "--path",
                 "${workspaceRoot}",
