@@ -33,7 +33,7 @@ public abstract class BaseProjectile : Node2D
         Position += Velocity * delta;
     }
 
-    public void _on_Area2D_body_entered(Node2D body)
+    public virtual void _on_Area2D_body_entered(Node2D body)
     {
         Hide(); // Player disappears after being hit.
 
