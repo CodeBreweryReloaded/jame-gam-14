@@ -3,7 +3,6 @@ using System;
 
 public class Main : Node2D
 {
-    private readonly Vector2 test;
     // Declare member variables here. Examples:
     // private int a = 2;
     // private string b = "text";
