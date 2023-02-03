@@ -10,7 +10,10 @@ public class BaseZombie : KinematicBody2D
     private int Health = 1;
 
     [Export]
-    private float Speed = 1.0F;
+    private float MaxSpeed = 1.0F;
+
+    [Export]
+    private float Speed;
 
     [Export]
     private NodePath Target;
@@ -20,6 +23,9 @@ public class BaseZombie : KinematicBody2D
     public override void _Ready()
     {
         base._Ready();
+
+        // set the speed to the max speed
+        Speed = MaxSpeed;
 
         agent = GetNode<NavigationAgent2D>("NavigationAgent2D");
         agent.SetTargetLocation(GetNode<Node2D>(Target).GlobalPosition);
@@ -42,7 +48,6 @@ public class BaseZombie : KinematicBody2D
 
     public void OnHit()
     {
-        GD.Print("Hit! Health: " + Health);
         Health += 1;
         if (Health >= MaxHealth)
         {
