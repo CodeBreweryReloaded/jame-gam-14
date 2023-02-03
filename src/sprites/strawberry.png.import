@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.svg-098a51e5e335fbc5e994ac92d10679d6.stex"
+path="res://.import/strawberry.png-d097d7b0ba8637a7a67d593ebdc37597.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/sprites/icon.svg"
-dest_files=[ "res://.import/icon.svg-098a51e5e335fbc5e994ac92d10679d6.stex" ]
+source_file="res://src/sprites/strawberry.png"
+dest_files=[ "res://.import/strawberry.png-d097d7b0ba8637a7a67d593ebdc37597.stex" ]
 
 [params]
 
