@@ -6,7 +6,7 @@ public class FreezeTower : BaseTower
     // Declare member variables here. Examples:
     // private int a = 2;
     // private string b = "text";
-    private PackedScene freezeProj= GD.Load<PackedScene>("res://src/scenes/FreezeTowerProjectile.tscn");
+
 
     protected override PackedScene ProjectileScene {get;} = GD.Load<PackedScene>("res://src/scenes/FreezeTowerProjectile.tscn");
 

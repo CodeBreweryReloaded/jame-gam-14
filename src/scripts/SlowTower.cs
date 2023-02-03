@@ -3,7 +3,7 @@ using System;
 
 public class SlowTower : BaseTower
 {
-    protected override PackedScene ProjectileScene => throw new NotImplementedException();
+    protected override PackedScene ProjectileScene => GD.Load<PackedScene>("res://src/scenes/SlowTowerProjectile.tscn");
 
     // Declare member variables here. Examples:
     // private int a = 2;

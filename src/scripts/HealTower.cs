@@ -3,7 +3,7 @@ using System;
 
 public class HealTower : BaseTower
 {
-    protected override PackedScene ProjectileScene => throw new NotImplementedException();
+    protected override PackedScene ProjectileScene => GD.Load<PackedScene>("res://src/scenes/HealTowerProjectile.tscn");
 
     // Declare member variables here. Examples:
     // private int a = 2;
