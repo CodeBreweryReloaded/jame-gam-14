@@ -1,23 +1,42 @@
 using Godot;
 using System;
 
-public class BaseZombie : Node2D
+public class BaseZombie : KinematicBody2D
 {
     [Export]
-    public int MaxHealth = 10;
+    private int MaxHealth = 10;
 
     [Export]
-    public int Health = 1;
+    private int Health = 1;
 
     [Export]
-    public float Speed = 1.0F;
+    private float Speed = 1.0F;
 
     [Export]
-    public BaseZombie Test;
+    private NodePath Target;
 
+    private NavigationAgent2D agent;
 
     public override void _Ready()
     {
+        base._Ready();
+
+        agent = GetNode<NavigationAgent2D>("NavigationAgent2D");
+        agent.SetTargetLocation(GetNode<Node2D>(Target).GlobalPosition);
+    }
+
+    public override void _PhysicsProcess(float delta)
+    {
+        base._PhysicsProcess(delta);
+
+        if (agent.IsTargetReached()) return;
+
+        Vector2 currentPosition = GlobalTransform.origin;
+        Vector2 nextPathPosition = agent.GetNextLocation();
+
+        Vector2 nextVelocity = (nextPathPosition - currentPosition).Normalized() * Speed;
+
+        MoveAndSlide(nextVelocity);
     }
 
 

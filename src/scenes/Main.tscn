@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/sprites/testbg-360.png" type="Texture" id=1]
-[ext_resource path="res://src/scripts/Main.cs" type="Script" id=2]
+[ext_resource path="res://src/scenes/Main.cs" type="Script" id=2]
+[ext_resource path="res://src/scenes/tiles/Road.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/scenes/enemies/BaseZombie/BaseZombie.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/scenes/castle/Castle.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
@@ -14,3 +17,16 @@ texture = ExtResource( 1 )
 visible = false
 anchor_mode = 0
 current = true
+
+[node name="Road" parent="." instance=ExtResource( 3 )]
+bake_navigation = true
+tile_data = PoolIntArray( 65543, 0, 14, 65544, 0, 9, 65545, 0, 9, 65546, 0, 9, 65547, 0, 9, 65548, 0, 9, 65549, 0, 9, 65550, 0, 9, 65551, 0, 9, 65552, 0, 9, 65553, 0, 9, 65554, 0, 9, 65555, 0, 0, 131076, 0, 14, 131077, 0, 9, 131078, 0, 9, 131079, 0, 2, 131080, 0, 11, 131081, 0, 11, 131082, 0, 11, 131083, 0, 11, 131084, 0, 11, 131085, 0, 11, 131086, 0, 11, 131087, 0, 11, 131088, 0, 11, 131089, 0, 11, 131090, 0, 11, 131091, 0, 7, 196612, 0, 1, 196613, 0, 11, 196614, 0, 11, 196615, 0, 11, 196616, 0, 8, 196617, 0, 3, 196618, 0, 3, 196619, 0, 3, 196620, 0, 3, 196621, 0, 3, 196622, 0, 3, 196623, 0, 3, 196624, 0, 3, 196625, 0, 3, 196626, 0, 6, 196627, 0, 7, 262148, 0, 4, 262149, 0, 6, 262150, 0, 11, 262151, 0, 11, 262152, 0, 7, 262162, 0, 1, 262163, 0, 7, 327685, 0, 1, 327686, 0, 11, 327687, 0, 11, 327688, 0, 7, 327698, 0, 1, 327699, 0, 7, 393221, 0, 4, 393222, 0, 3, 393223, 0, 6, 393224, 0, 7, 393234, 0, 1, 393235, 0, 7, 458759, 0, 1, 458760, 0, 7, 458770, 0, 1, 458771, 0, 7, 524295, 0, 1, 524296, 0, 7, 524306, 0, 1, 524307, 0, 7, 589831, 0, 1, 589832, 0, 7, 589842, 0, 1, 589843, 0, 7, 655367, 0, 1, 655368, 0, 7, 655378, 0, 4, 655379, 0, 13, 720903, 0, 4, 720904, 0, 13 )
+
+[node name="BaseZombie" parent="." instance=ExtResource( 4 )]
+position = Vector2( 152, 51 )
+Speed = 10.0
+Target = NodePath("../Castle")
+
+[node name="Castle" parent="." instance=ExtResource( 5 )]
+unique_name_in_owner = true
+position = Vector2( 380, 196 )
