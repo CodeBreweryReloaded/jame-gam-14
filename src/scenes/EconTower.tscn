@@ -5,3 +5,7 @@
 
 [node name="EconTower" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+Range = 5
+LevelFactor = 1.75
+Heal = 5
+Effekt = "Money"

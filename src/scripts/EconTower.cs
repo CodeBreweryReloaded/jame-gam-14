@@ -3,6 +3,8 @@ using System;
 
 public class EconTower : BaseTower
 {
+    protected override PackedScene ProjectileScene => throw new NotImplementedException();
+
     // Declare member variables here. Examples:
     // private int a = 2;
     // private string b = "text";

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class BaseTower : Node2D
+public abstract class BaseTower : Node2D
 {
 	// Declare member variables here. Examples:
 	// private int a = 2;
@@ -14,8 +14,11 @@ public class BaseTower : Node2D
 	protected float LevelFactor = 1.5F;
 	[Export]
 	protected int Level = 1;
-
-	private Node2D target;
+	[Export]
+	public int Heal = 10;
+	[Export]
+	public String Effect = "";
+	protected abstract PackedScene ProjectileScene{get;}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -31,10 +34,26 @@ public class BaseTower : Node2D
 
 	protected virtual void Shoot(){
 		Searchtarget();
-		
+		BaseProjectile proj = (BaseProjectile)ProjectileScene.Instance();
+		proj.Target = Searchtarget();
+		proj.Tower = this;
+
+		GetParent().AddChild(proj);
+
 	}
 
-	protected virtual void Searchtarget(){
+	protected virtual Node2D Searchtarget(){
+		Node2D target = new Node2D();
 
+		//TODO
+
+		return null;
 	}
+
+	private void LevelUp(){//TODO is level up a tower's responsibility?
+		Level++; 
+		Heal = (int) (Heal * LevelFactor);
+	}
+
+	
 }

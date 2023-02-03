@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class BaseProjectile : Node2D
+public abstract class BaseProjectile : Node2D
 {
     // Declare member variables here. Examples:
     // private int a = 2;
@@ -10,17 +10,19 @@ public class BaseProjectile : Node2D
     [Export]
     protected Vector2 Velocity = new Vector2(10, 0);
     [Export]
-    protected Node2D Target { get; set; }
+    public Node2D Target { get; set; }
     [Export]
-    protected float Heal { get; set; }
+    protected float Heal => Tower.Heal;
     [Export]
-    protected string Effekt { get; set; }
+    protected string Effect => Tower.Effect;
     [Signal]
     protected delegate void Hit();
+    [Export]
+    public BaseTower Tower { get; set; }
 
+    
     // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
-    {
+    public override void _Ready(){
 
     }
 
@@ -36,11 +38,12 @@ public class BaseProjectile : Node2D
         Hide(); // Player disappears after being hit.
 
         Connect(nameof(Hit), body, "onHit");
-        EmitSignal(nameof(Hit), Heal, Effekt);
+        EmitSignal(nameof(Hit), Heal, Effect);
 
         // Must be deferred as we can't change physics properties on a physics callback.
         GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
     }
+
 
 
 }
