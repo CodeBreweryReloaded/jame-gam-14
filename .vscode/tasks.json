@@ -1,0 +1,21 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "windows": {
+                "command": "godot"
+            },
+            "command": "godot-mono",
+            "type": "process",
+            "args": [
+                "--build-solutions",
+                "--path",
+                "${workspaceRoot}",
+                "--no-window",
+                "-q"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
