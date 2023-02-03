@@ -4,10 +4,19 @@ using System;
 public class BaseZombie : KinematicBody2D
 {
 	[Export]
-	private int MaxHealth = 10;
+	public int MaxHealth
+	{
+		get => healthBar.MaxHealth;
+		set => healthBar.MaxHealth = value;
+	}
 
 	[Export]
-	private int Health = 1;
+	public int Health
+	{
+		get => healthBar.Health;
+		set => healthBar.Health = value;
+	}
+
 
 	[Export]
 	private float MaxSpeed = 1.0F;
@@ -19,6 +28,15 @@ public class BaseZombie : KinematicBody2D
 	private NodePath Target;
 
 	private NavigationAgent2D agent;
+
+	private Lazy<HealthBar> healthBarLazy;
+
+	private HealthBar healthBar => healthBarLazy.Value;
+
+	public BaseZombie()
+	{
+		healthBarLazy = new Lazy<HealthBar>(() => GetNode<HealthBar>("HealthBar"));
+	}
 
 	public override void _Ready()
 	{
