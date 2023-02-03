@@ -15,7 +15,7 @@ public class BaseTower : Node2D
 	[Export]
 	protected int Level = 1;
 
-	private RigidBody2D target;
+	private Node2D target;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -29,7 +29,7 @@ public class BaseTower : Node2D
 //      
 //  }
 
-	protected virtual void Schoot(){
+	protected virtual void Shoot(){
 		Searchtarget();
 		
 	}
