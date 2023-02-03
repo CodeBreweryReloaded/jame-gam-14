@@ -9,7 +9,8 @@ public class PierceTowerProjectile : BaseProjectile
     // private int a = 2;
     // private string b = "text";
     [Export]
-    private int Pierce = 2;
+    private int MaxPierce => ((PierceTower)Tower).Pierce;
+    private int PierceCount = 0;
     private HashSet<Node2D> HitList = new HashSet<Node2D>();
 
     // Called when the node enters the scene tree for the first time.
@@ -28,9 +29,9 @@ public class PierceTowerProjectile : BaseProjectile
 public override void _on_Area2D_body_entered(Node2D body)
     {
         if(HitList.Add(body)){
-            Pierce--;
+            PierceCount++;
         }
-        if(Pierce <= 0){
+        if(PierceCount >= MaxPierce){
             Hide(); // Player disappears after being hit.
         }
 
