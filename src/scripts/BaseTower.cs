@@ -12,6 +12,10 @@ public class BaseTower : Node2D
 	protected float AttackSpeed = 10.0F;
 	[Export]
 	protected float LevelFactor = 1.5F;
+	[Export]
+	protected int Level = 1;
+
+	private RigidBody2D target;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -24,4 +28,13 @@ public class BaseTower : Node2D
 //  {
 //      
 //  }
+
+	protected virtual void Schoot(){
+		Searchtarget();
+		
+	}
+
+	protected virtual void Searchtarget(){
+
+	}
 }
