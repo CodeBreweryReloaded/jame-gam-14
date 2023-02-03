@@ -7,4 +7,3 @@
 script = ExtResource( 2 )
 Range = 8
 Heal = 2
-Effekt = "Freeze"

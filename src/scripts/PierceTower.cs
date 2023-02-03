@@ -27,6 +27,11 @@ public class PierceTower : BaseTower
 //      
 //  }
 
+    protected override void LevelUp(){//TODO is level up a tower's responsibility?
+		Level++; 
+		Heal = (int) (Heal * LevelFactor);
+        Pierce++;
+	}
 
 
 }

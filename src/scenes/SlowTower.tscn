@@ -8,4 +8,3 @@ script = ExtResource( 2 )
 Range = 8
 LevelFactor = 1.4
 Heal = 5
-Effekt = "Slow"

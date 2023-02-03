@@ -5,3 +5,7 @@
 
 [node name="PierceTower" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+Range = 8
+AttackSpeed = 9.0
+Heal = 7
+Pierce = 2

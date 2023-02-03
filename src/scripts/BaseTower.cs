@@ -50,7 +50,7 @@ public abstract class BaseTower : Node2D
 		return null;
 	}
 
-	private void LevelUp(){//TODO is level up a tower's responsibility?
+	protected virtual void LevelUp(){//TODO is level up a tower's responsibility?
 		Level++; 
 		Heal = (int) (Heal * LevelFactor);
 	}

@@ -9,7 +9,7 @@ public class PierceTowerProjectile : BaseProjectile
     // private int a = 2;
     // private string b = "text";
     [Export]
-    private int Pierce {get; set;}
+    private int Pierce = 2;
     private HashSet<Node2D> HitList = new HashSet<Node2D>();
 
     // Called when the node enters the scene tree for the first time.
