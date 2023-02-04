@@ -20,6 +20,12 @@ public abstract class BaseTower : Node2D
 	public String Effect = "";
 	protected abstract PackedScene ProjectileScene{get;}
 
+
+	public BaseTower(){
+		CircleRange towerRange = new CircleRange(this, Range);
+		AddChild(towerRange);
+	}
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -33,7 +39,6 @@ public abstract class BaseTower : Node2D
 //  }
 
 	protected virtual void Shoot(){
-		Searchtarget();
 		BaseProjectile proj = (BaseProjectile)ProjectileScene.Instance();
 		proj.Target = Searchtarget();
 		proj.Tower = this;
@@ -44,7 +49,7 @@ public abstract class BaseTower : Node2D
 
 	protected virtual Node2D Searchtarget(){
 		Node2D target = new Node2D();
-
+		
 		//TODO
 
 		return null;
