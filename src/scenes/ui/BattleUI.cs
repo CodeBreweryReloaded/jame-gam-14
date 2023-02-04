@@ -11,14 +11,11 @@ public class BattleUI : CanvasLayer
     }
 
     public void onTowerSelected(TowerButton towerButton) {
-        if (towerButton != null) {
-            currentTower = towerButton.TowerType;
-        }
+        currentTower = towerButton?.TowerType;
         foreach (Node node in GetChildren())
         {
-            if (node is TowerButton) {
-                TowerButton tower = (TowerButton)node;
-                tower.Active = tower == towerButton ? true : false;
+            if (node is TowerButton tower) {
+                tower.Active = tower == towerButton;
             }
         }
     }
