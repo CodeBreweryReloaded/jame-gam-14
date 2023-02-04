@@ -32,14 +32,15 @@ public class OverTimeEffectScene : Node2D
         timer.Autostart = true;
         timer.OneShot = true;
         timer.WaitTime = duration;
-        Connect("timeout", this, "onTimeOut");
+        Connect("timeout", this, nameof(onTimeOut));
         AddChild(timer);
 
     }
 
     private void onTimeOut()
     {
-        EmitSignal(nameof(EndEffect), Effect, AffectedEnemy);
+        Connect(nameof(EndEffect), AffectedEnemy, "OnEndEffect");
+        EmitSignal(nameof(EndEffect), Effect);
         QueueFree();
     }
 }

@@ -40,4 +40,18 @@ public class Bat : BaseEnemy
         }
 
     }
+
+    private void OnEndEffect(string effect){
+        switch (effect)
+        {
+            case "Slow":
+                Speed = MaxSpeed;
+
+                break;
+
+            case "Freeze":
+                Speed = MaxSpeed;
+                break;
+        }
+    }
 }
