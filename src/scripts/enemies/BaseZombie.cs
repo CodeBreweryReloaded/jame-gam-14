@@ -32,13 +32,11 @@ public class BaseZombie : KinematicBody2D
     private Lazy<HealthBar> healthBarLazy;
 
     private HealthBar healthBar => healthBarLazy.Value;
-	private OverTimeEffectScene Ote = new OverTimeEffectScene();
-				
+
 
     public BaseZombie()
     {
         healthBarLazy = new Lazy<HealthBar>(() => GetNode<HealthBar>("HealthBar"));
-		this.AddChild(Ote);
     }
 
     public override void _Ready()
@@ -67,8 +65,11 @@ public class BaseZombie : KinematicBody2D
     }
 
 
-    public void OnHit(int heal, string Effect)
+    public void OnHit(int heal, string Effect, int duration)
     {
+
+        OverTimeEffectScene Ote = new OverTimeEffectScene();
+
         Health += heal;
         if (Health >= MaxHealth)
         {
@@ -79,18 +80,21 @@ public class BaseZombie : KinematicBody2D
         {
             case "Slow":
                 Speed = Speed * 0.7F;
-				Ote.OvertTimeEffect("Slow", this);
+                Ote.OvertTimeEffect("Slow", this, duration);
 
-				
+
                 break;
-			
-			case "Freeze":
-				Speed = 0;
-				Ote.OvertTimeEffect("Freeze", this);
-			break;
-        }
-		
 
-    } 
+            case "Freeze":
+                Speed = 0;
+                Ote.OvertTimeEffect("Freeze", this, duration);
+                break;
+        }
+    }
+
+    private void EffectEnded()
+    {
+
+    }
 
 }

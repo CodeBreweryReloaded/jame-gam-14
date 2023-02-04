@@ -7,10 +7,12 @@ public class OverTimeEffectScene : Node2D
     // private int a = 2;
     // private string b = "text";
     [Signal]
-    protected delegate void EndEffect();
+    protected delegate void EndEffect(string effect, BaseZombie effectedEnemy);
+    private string Effect;
+    private BaseZombie AffectedEnemy;
 
 
-    
+
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -24,18 +26,24 @@ public class OverTimeEffectScene : Node2D
     //      
     //  }
 
-    public void OvertTimeEffect(string Effect, BaseZombie effectedEnemy)
+    public void OvertTimeEffect(string effect, BaseZombie affectedEnemy, int duration)
     {
+        Effect = effect;
+        AffectedEnemy = affectedEnemy;
+
         Timer timer = new Timer();
         timer.Autostart = true;
         timer.OneShot = true;
-        timer.WaitTime = 3;
+        timer.WaitTime = duration;
+        Connect("timeout", this, "onTimeOut");
         AddChild(timer);
 
     }
 
 
-    private void onTimeOut(string effect, BaseZombie effectedEnemy){
-
+    private void onTimeOut()
+    {
+        EmitSignal(nameof(EndEffect), Effect, AffectedEnemy);
+        QueueFree();
     }
 }
