@@ -9,8 +9,6 @@
 [ext_resource path="res://src/scenes/ui/BattleUI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/scenes/tower/FreezeTower/FreezeTower.tscn" type="PackedScene" id=9]
 
-[sub_resource type="CircleShape2D" id=1]
-
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -46,7 +44,7 @@ position = Vector2( 616, 250 )
 [node name="BattleUI" parent="." instance=ExtResource( 7 )]
 
 [node name="FreezeTower" parent="." instance=ExtResource( 9 )]
-position = Vector2( 233, 257 )
+position = Vector2( 280, 132 )
 Range = 150
 AttackSpeed = 60
 Effect = "Freeze"
