@@ -6,6 +6,10 @@ public class FreezeTower : BaseTower
     // Declare member variables here. Examples:
     // private int a = 2;
     // private string b = "text";
+    [Export]
+    public float Duration = 1.0F;
+
+    
 
 
     protected override PackedScene ProjectileScene {get;} = GD.Load<PackedScene>("res://src/scenes/FreezeTowerProjectile.tscn");
@@ -21,6 +25,10 @@ public class FreezeTower : BaseTower
 //  {
 //      
 //  }
-
+    protected override void LevelUp(){//TODO is level up a tower's responsibility?
+        Level++; 
+        Heal = (int) (Heal * LevelFactor);
+        Duration++;
+    }
 
 }

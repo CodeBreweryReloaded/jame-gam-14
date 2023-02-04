@@ -6,7 +6,8 @@ public class FreezeTowerProjectile : BaseProjectile
     // Declare member variables here. Examples:
     // private int a = 2;
     // private string b = "text";
-    
+    [Export]
+    private float Duration => ((FreezeTower)Tower).Duration;
 
 
     

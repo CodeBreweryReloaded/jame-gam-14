@@ -52,5 +52,5 @@ public abstract class BaseEnemy : KinematicBody2D
         base._PhysicsProcess(delta);
     }
 
-    public abstract void onHit(int heal, string effect);
+    public abstract void onHit(int heal, string effect, int duration);
 }

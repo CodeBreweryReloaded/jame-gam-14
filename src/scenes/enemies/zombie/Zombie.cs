@@ -36,12 +36,28 @@ public class Zombie : BaseEnemy
 		MoveAndSlide(nextVelocity);
 	}
 
-    public override void onHit(int heal, string effect)
-    {
-		Health += 1;
-		if (Health >= MaxHealth)
-		{
-			QueueFree();
-		}
+    public override void onHit(int heal, string effect, int duration){
+        OverTimeEffectScene Ote = new OverTimeEffectScene();
+
+        Health += heal;
+        if (Health >= MaxHealth)
+        {
+            QueueFree(); //TODO Mob cured
+        }
+
+        switch (effect)
+        {
+            case "Slow":
+                Speed = Speed * 0.7F;
+                Ote.OvertTimeEffect("Slow", this, duration);
+
+                break;
+
+            case "Freeze":
+                Speed = 0;
+                Ote.OvertTimeEffect("Freeze", this, duration);
+                break;
+        }
+
     }
 }
