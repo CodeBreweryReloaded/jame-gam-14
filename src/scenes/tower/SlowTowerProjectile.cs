@@ -6,6 +6,8 @@ public class SlowTowerProjectile : BaseProjectile
     // Declare member variables here. Examples:
     // private int a = 2;
     // private string b = "text";
+    [Export]
+    private float Duration => ((SlowTower)Tower).Duration;
 
 
 

@@ -25,8 +25,7 @@ extents = Vector2( 4.5, 10 )
 
 [node name="Zombie" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-MaxSpeed = 10.0
-Speed = 10.0
+BaseSpeed = 10.0
 agentPath = NodePath("Anchor/NavigationAgent2D")
 anchorPath = NodePath("Anchor")
 randomRange = 1.0

@@ -15,9 +15,4 @@ public class Bat : BaseEnemy
 
         MoveAndSlide(new Vector2(1, 0) * Speed);
     }
-
-    public override void onHit(int heal, string effect)
-    {
-        QueueFree();
-    }
 }

@@ -21,10 +21,13 @@ public abstract class BaseEnemy : KinematicBody2D
 
 
     [Export]
-    protected float MaxSpeed = 1.0F;
+    protected float BaseSpeed = 1.0F;
 
-    [Export]
-    protected float Speed;
+    protected bool IsFrozen { get; set; } = false;
+
+    protected int SlowdownCount { get; set; } = 0;
+
+    protected float Speed => IsFrozen ? 0 : BaseSpeed * (float)Math.Pow(0.7f, SlowdownCount);
 
     [Export]
     protected NodePath Target;
@@ -38,19 +41,47 @@ public abstract class BaseEnemy : KinematicBody2D
 	{
 		healthBarLazy = new Lazy<HealthBar>(() => GetNode<HealthBar>("HealthBar"));
 	}
-
-	public override void _Ready()
-	{
-		base._Ready();
-
-		// set the speed to the max speed
-		Speed = MaxSpeed;
-	}
     
     public override void _PhysicsProcess(float delta)
     {
         base._PhysicsProcess(delta);
     }
 
-    public abstract void onHit(int heal, string effect);
+    public virtual void onHit(int heal, string effect, int duration){
+        OverTimeEffectScene Ote = new OverTimeEffectScene();
+
+        Health += heal;
+        if (Health >= MaxHealth)
+        {
+            QueueFree(); //TODO Mob cured
+        }
+
+        switch (effect)
+        {
+            case "Slow":
+                SlowdownCount++;
+                Ote.OverTimeEffect("Slow", this, duration);
+
+                break;
+
+            case "Freeze":
+                IsFrozen = true;
+                Ote.OverTimeEffect("Freeze", this, duration);
+                break;
+        }
+
+    }
+
+    private void OnEndEffect(string effect){
+        switch (effect)
+        {
+            case "Slow":
+                SlowdownCount--;
+                break;
+
+            case "Freeze":
+                IsFrozen = false;
+                break;
+        }
+    }
 }
