@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BaseZombieSprite.png-4c42334f35ba7a86fca2a8f8d0e6df5c.stex"
+path="res://.import/BaseZombieSprite.png-3b243d3a218e5e68f3216db23ac74e32.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/enemies/BaseZombie/BaseZombieSprite.png"
-dest_files=[ "res://.import/BaseZombieSprite.png-4c42334f35ba7a86fca2a8f8d0e6df5c.stex" ]
+source_file="res://src/scenes/enemies/zombie/BaseZombieSprite.png"
+dest_files=[ "res://.import/BaseZombieSprite.png-3b243d3a218e5e68f3216db23ac74e32.stex" ]
 
 [params]
 
