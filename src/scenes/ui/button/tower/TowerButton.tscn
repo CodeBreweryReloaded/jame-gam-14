@@ -5,6 +5,10 @@
 [ext_resource path="res://src/scenes/ui/button/tower/TowerButton.cs" type="Script" id=3]
 
 [node name="TowerButton" instance=ExtResource( 1 )]
+anchor_right = 0.094
+anchor_bottom = 0.167
+margin_right = -0.160004
+margin_bottom = -0.120003
 script = ExtResource( 3 )
 Sprite = ExtResource( 2 )
 NormalAnimationName = "Box"

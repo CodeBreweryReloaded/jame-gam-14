@@ -5,9 +5,6 @@
 
 [node name="AnimatedButton" type="Control"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Button" type="Button" parent="."]
 unique_name_in_owner = true
@@ -16,18 +13,12 @@ margin_right = 78.0
 margin_bottom = 82.0
 mouse_default_cursor_shape = 2
 clip_text = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Box" type="AnimatedSprite" parent="."]
 unique_name_in_owner = true
 playing = true
 centered = false
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [connection signal="mouse_entered" from="Button" to="Box" method="mouseEnter"]
 [connection signal="mouse_exited" from="Button" to="Box" method="mouseExit"]
