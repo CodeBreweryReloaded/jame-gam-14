@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/scenes/ui/button/AnimatedButton.cs" type="Script" id=1]
+[ext_resource path="res://src/scenes/ui/button/Box.cs" type="Script" id=2]
+
+[node name="AnimatedButton" type="Control"]
+script = ExtResource( 1 )
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 78.0
+margin_bottom = 82.0
+mouse_default_cursor_shape = 2
+clip_text = true
+
+[node name="Box" type="AnimatedSprite" parent="."]
+unique_name_in_owner = true
+playing = true
+centered = false
+script = ExtResource( 2 )
+
+[connection signal="mouse_entered" from="Button" to="Box" method="mouseEnter"]
+[connection signal="mouse_exited" from="Button" to="Box" method="mouseExit"]
+[connection signal="pressed" from="Button" to="." method="onButtonPressed"]
