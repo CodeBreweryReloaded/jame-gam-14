@@ -21,18 +21,18 @@ public abstract class BaseTower : Node2D
     public String Effect = "";
     protected abstract PackedScene ProjectileScene { get; }
     private HashSet<Node2D> InRangeList = new HashSet<Node2D>();
-
-
-    public BaseTower()
-    {
-        CircleRange circleRange = new CircleRange(this, Range);
-        AddChild(circleRange);
-    }
+    [Export(PropertyHint.ResourceType, "NodePath")]
+    private NodePath colliderPath;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-
+        CollisionShape2D shape = new CollisionShape2D();
+        CircleShape2D circle = new CircleShape2D();
+        circle.Radius = Range;
+        shape.Shape = circle;
+        GetNode<Node2D>(colliderPath).AddChild(shape);
+        Update();
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.

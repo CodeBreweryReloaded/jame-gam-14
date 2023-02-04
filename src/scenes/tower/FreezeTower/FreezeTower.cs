@@ -1,23 +1,22 @@
 using Godot;
 using System;
 
-public class SlowTower : BaseTower
+public class FreezeTower : BaseTower
 {
-    protected override PackedScene ProjectileScene => GD.Load<PackedScene>("res://src/scenes/SlowTowerProjectile.tscn");
-
     // Declare member variables here. Examples:
     // private int a = 2;
     // private string b = "text";
     [Export]
-    public float Duration = 3.0F;
+    public float Duration = 1.0F;
 
     
 
 
-    // Called when the node enters the scene tree for the first time.
+    protected override PackedScene ProjectileScene {get;} = GD.Load<PackedScene>("res://src/scenes/FreezeTowerProjectile.tscn");
+
     public override void _Ready()
     {
-        
+        base._Ready();
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,5 +29,5 @@ public class SlowTower : BaseTower
         Heal = (int) (Heal * LevelFactor);
         Duration++;
     }
-}
 
+}

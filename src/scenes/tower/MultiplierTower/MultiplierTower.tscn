@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/scenes/tower/MultiplierTower.cs" type="Script" id=1]
+[ext_resource path="res://src/scenes/tower/MultiplierTower/MultiplierTower.cs" type="Script" id=1]
 [ext_resource path="res://src/scenes/tower/BaseTower.tscn" type="PackedScene" id=2]
 
 [node name="MultiplierTower" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-Range = 13
+Range = 75
 AttackSpeed = 13.0
 LevelFactor = 1.6
 Heal = 1
