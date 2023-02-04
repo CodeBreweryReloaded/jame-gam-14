@@ -23,7 +23,7 @@ public class OverTimeEffectScene : Node2D
     //      
     //  }
 
-    public void OverTimeEffect(string effect, BaseEnemy affectedEnemy, int duration)
+    public void OverTimeEffect(string effect, BaseEnemy affectedEnemy, float effectDuration)
     {
         Effect = effect;
         AffectedEnemy = affectedEnemy;
@@ -31,9 +31,9 @@ public class OverTimeEffectScene : Node2D
         Timer timer = new Timer();
         timer.Autostart = true;
         timer.OneShot = true;
-        timer.WaitTime = duration;
-        Connect("timeout", this, nameof(onTimeOut));
-        AddChild(timer);
+        timer.WaitTime = effectDuration;
+        timer.Connect("timeout", this, nameof(onTimeOut));
+        AffectedEnemy.AddChild(timer);
 
     }
 
