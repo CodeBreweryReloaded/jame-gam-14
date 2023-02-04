@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/scenes/ui/TowerSelection.cs" type="Script" id=1]
 [ext_resource path="res://src/scenes/ui/button/tower/TowerButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/ui/button/pause/PauseButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scenes/ui/button/tower/tower-icon-placeholder-2.png" type="Texture" id=4]
+[ext_resource path="res://src/scenes/ui/health/PlayerHealth.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/scenes/ui/button/tower/tower-icon-placeholder.png" type="Texture" id=6]
 [ext_resource path="res://src/scenes/ui/cursor/Cursor.tscn" type="PackedScene" id=7]
 
@@ -38,6 +39,10 @@ margin_left = 598.0
 margin_top = 1.0
 margin_right = 598.0
 margin_bottom = 1.0
+
+[node name="PlayerHealth" parent="." instance=ExtResource( 5 )]
+position = Vector2( 263, 13 )
+CurrentHealth = 10
 
 [connection signal="ButtonPressed" from="AngryTower" to="Cursor" method="setSprite"]
 [connection signal="TowerSelected" from="AngryTower" to="." method="onTowerSelected"]
