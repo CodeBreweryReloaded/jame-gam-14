@@ -1,31 +1,31 @@
 [gd_resource type="SpriteFrames" load_steps=9 format=2]
 
-[ext_resource path="res://src/scenes/ui/slot_hover.png" type="Texture" id=1]
-[ext_resource path="res://src/scenes/ui/slot.png" type="Texture" id=2]
+[ext_resource path="res://src/scenes/ui/button/tower/slot_hover.png" type="Texture" id=1]
+[ext_resource path="res://src/scenes/ui/button/tower/slot.png" type="Texture" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 100, 100 )
+region = Rect2( 0, 0, 60, 60 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
-region = Rect2( 100, 0, 100, 100 )
+region = Rect2( 60, 0, 60, 60 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 2 )
-region = Rect2( 200, 0, 100, 100 )
+region = Rect2( 120, 0, 60, 60 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 100, 100 )
+region = Rect2( 0, 0, 60, 60 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
-region = Rect2( 100, 0, 100, 100 )
+region = Rect2( 60, 0, 60, 60 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 200, 0, 100, 100 )
+region = Rect2( 120, 0, 60, 60 )
 
 [resource]
 animations = [ {

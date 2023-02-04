@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slot_hover.png-d6f827e29872995656dfd8f7922b178e.stex"
+path="res://.import/slot_hover.png-feba5e2d75670b81eca393c0ab9a687d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/ui/slot_hover.png"
-dest_files=[ "res://.import/slot_hover.png-d6f827e29872995656dfd8f7922b178e.stex" ]
+source_file="res://src/scenes/ui/button/tower/slot_hover.png"
+dest_files=[ "res://.import/slot_hover.png-feba5e2d75670b81eca393c0ab9a687d.stex" ]
 
 [params]
 

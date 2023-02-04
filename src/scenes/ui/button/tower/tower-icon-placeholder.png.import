@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tower-icon-placeholder.png-daaa2c34c17708fbb0276ffcead700ff.stex"
+path="res://.import/tower-icon-placeholder.png-750f68afcd1274c25b845ff917880461.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/ui/tower-icon-placeholder.png"
-dest_files=[ "res://.import/tower-icon-placeholder.png-daaa2c34c17708fbb0276ffcead700ff.stex" ]
+source_file="res://src/scenes/ui/button/tower/tower-icon-placeholder.png"
+dest_files=[ "res://.import/tower-icon-placeholder.png-750f68afcd1274c25b845ff917880461.stex" ]
 
 [params]
 

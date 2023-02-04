@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slot.png-c5d4090469a562213f771b13159c3a4f.stex"
+path="res://.import/slot.png-87c580b3042235282a02ffa7cc56f802.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/ui/slot.png"
-dest_files=[ "res://.import/slot.png-c5d4090469a562213f771b13159c3a4f.stex" ]
+source_file="res://src/scenes/ui/button/tower/slot.png"
+dest_files=[ "res://.import/slot.png-87c580b3042235282a02ffa7cc56f802.stex" ]
 
 [params]
 

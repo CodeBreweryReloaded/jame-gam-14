@@ -3,11 +3,11 @@ using System;
 
 public class Box : AnimatedSprite
 {
-    [Export(PropertyHint.ResourceType, "String")]
-    private String normalSpriteName;
+    //[Export(PropertyHint.ResourceType, "String")]
+    public String normalSpriteName;
 
-    [Export(PropertyHint.ResourceType, "String")]
-    private String hoverSpriteName;
+    //[Export(PropertyHint.ResourceType, "String")]
+    public String hoverSpriteName;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
