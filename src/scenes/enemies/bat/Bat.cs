@@ -29,13 +29,13 @@ public class Bat : BaseEnemy
         {
             case "Slow":
                 Speed = Speed * 0.7F;
-                Ote.OvertTimeEffect("Slow", this, duration);
+                Ote.OverTimeEffect("Slow", this, duration);
 
                 break;
 
             case "Freeze":
                 Speed = 0;
-                Ote.OvertTimeEffect("Freeze", this, duration);
+                Ote.OverTimeEffect("Freeze", this, duration);
                 break;
         }
 

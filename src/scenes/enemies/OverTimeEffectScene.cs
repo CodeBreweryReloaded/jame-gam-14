@@ -23,7 +23,7 @@ public class OverTimeEffectScene : Node2D
     //      
     //  }
 
-    public void OvertTimeEffect(string effect, BaseEnemy affectedEnemy, int duration)
+    public void OverTimeEffect(string effect, BaseEnemy affectedEnemy, int duration)
     {
         Effect = effect;
         AffectedEnemy = affectedEnemy;
