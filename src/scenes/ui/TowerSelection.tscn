@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/scenes/ui/TowerSelection.cs" type="Script" id=1]
+[ext_resource path="res://src/scenes/ui/button/tower/TowerButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/scenes/ui/button/tower/tower-icon-placeholder-2.png" type="Texture" id=4]
+[ext_resource path="res://src/scenes/ui/button/tower/tower-icon-placeholder.png" type="Texture" id=6]
+[ext_resource path="res://src/scenes/ui/cursor/Cursor.tscn" type="PackedScene" id=7]
+
+[node name="TowerSelection" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Cursor" parent="." instance=ExtResource( 7 )]
+position = Vector2( 26, 79 )
+
+[node name="AngryTower" parent="." instance=ExtResource( 2 )]
+margin_left = 23.0
+margin_top = 107.0
+margin_right = 23.0
+margin_bottom = 107.0
+towerSprite = ExtResource( 4 )
+towerType = "angry"
+
+[node name="HappyTower" parent="." instance=ExtResource( 2 )]
+margin_left = 22.0
+margin_top = 21.0
+margin_right = 22.0
+margin_bottom = 21.0
+towerSprite = ExtResource( 6 )
+towerType = "happy"
+
+[connection signal="ButtonPressed" from="AngryTower" to="Cursor" method="setSprite"]
+[connection signal="TowerSelected" from="AngryTower" to="." method="onTowerSelected"]
+[connection signal="ButtonPressed" from="HappyTower" to="Cursor" method="setSprite"]
+[connection signal="TowerSelected" from="HappyTower" to="." method="onTowerSelected"]

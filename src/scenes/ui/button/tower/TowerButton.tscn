@@ -9,7 +9,7 @@ script = ExtResource( 3 )
 Sprite = ExtResource( 2 )
 NormalAnimationName = "Box"
 HoverAnimationName = "Hover"
-sprite = null
+towerSprite = null
 towerType = ""
 
 [node name="Tower" type="Sprite" parent="." index="2"]

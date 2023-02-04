@@ -19,7 +19,6 @@ public class Cursor : Node2D
     }
 
     public void setSprite(Texture texture) {
-        GD.Print(texture);
         sprite.Texture = texture;
     }
 }

@@ -4,7 +4,7 @@ using System;
 public class TowerButton : AnimatedButton
 {
     [Export(PropertyHint.ResourceType, "Texture")]
-    private Texture sprite;
+    private Texture towerSprite;
 
     [Export(PropertyHint.ResourceType, "String")]
     private String towerType = "";
@@ -12,22 +12,36 @@ public class TowerButton : AnimatedButton
     [Signal]
     delegate void ButtonPressed(Texture texture);
 
+    [Signal]
+    delegate void TowerSelected(TowerButton tower);
+
     private bool active = false;
+
+    public bool Active {
+        get => active;
+        set => active = value;
+    }
+
+    public string TowerType {
+        get => towerType;
+        set => towerType = value;
+    }
 
     public override void _Ready()
     {
         base._Ready();
-        GetNode<Sprite>("Tower").Texture = sprite;
+        GetNode<Sprite>("Tower").Texture = towerSprite;
     }
 
     public override void onButtonPressed()
     {
         if (active) {
             EmitSignal(nameof(ButtonPressed), (Texture)null);
+            EmitSignal(nameof(TowerSelected), (TowerButton)null);
         } else {
-            EmitSignal(nameof(ButtonPressed), sprite);
+            EmitSignal(nameof(ButtonPressed), towerSprite);
+            EmitSignal(nameof(TowerSelected), this);
         }
-        active = !active;
     }
 
 }
