@@ -10,7 +10,9 @@ public class TowerButton : AnimatedButton
     private String towerType = "";
 
     [Signal]
-    delegate void ButtonPressed();
+    delegate void ButtonPressed(Texture texture);
+
+    private bool active = false;
 
     public override void _Ready()
     {
@@ -20,7 +22,12 @@ public class TowerButton : AnimatedButton
 
     public override void onButtonPressed()
     {
-        EmitSignal(nameof(ButtonPressed), towerType);
+        if (active) {
+            EmitSignal(nameof(ButtonPressed), (Texture)null);
+        } else {
+            EmitSignal(nameof(ButtonPressed), sprite);
+        }
+        active = !active;
     }
 
 }
