@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/scenes/tower/BaseTower.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/scenes/tower/FreezeTower/FreezeTower.cs" type="Script" id=2]
+[ext_resource path="res://src/scenes/tower/FreezeTower/FreezeTowerProjectile.tscn" type="PackedScene" id=3]
+
+[node name="FreezeTower" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+Range = 8
+Heal = 2
+EffectDuration = 3.0
+projectileScene = ExtResource( 3 )

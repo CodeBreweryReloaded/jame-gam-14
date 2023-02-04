@@ -14,5 +14,4 @@ BaseSpeed = 10.0
 frames = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
-position = Vector2( 8, 17 )
 shape = SubResource( 1 )
