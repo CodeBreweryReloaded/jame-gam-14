@@ -21,10 +21,13 @@ public abstract class BaseEnemy : KinematicBody2D
 
 
     [Export]
-    protected float MaxSpeed = 1.0F;
+    protected float BaseSpeed = 1.0F;
 
-    [Export]
-    protected float Speed;
+    protected bool IsFrozen { get; set; } = false;
+
+    protected int SlowdownCount { get; set; } = 0;
+
+    protected float Speed => IsFrozen ? 0 : BaseSpeed * (float)Math.Pow(0.7f, SlowdownCount);
 
     [Export]
     protected NodePath Target;
@@ -37,14 +40,6 @@ public abstract class BaseEnemy : KinematicBody2D
 	public BaseEnemy()
 	{
 		healthBarLazy = new Lazy<HealthBar>(() => GetNode<HealthBar>("HealthBar"));
-	}
-
-	public override void _Ready()
-	{
-		base._Ready();
-
-		// set the speed to the max speed
-		Speed = MaxSpeed;
 	}
     
     public override void _PhysicsProcess(float delta)

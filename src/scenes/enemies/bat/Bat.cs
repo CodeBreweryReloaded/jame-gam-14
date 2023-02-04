@@ -28,13 +28,13 @@ public class Bat : BaseEnemy
         switch (effect)
         {
             case "Slow":
-                Speed = Speed * 0.7F;
+                SlowdownCount++;
                 Ote.OverTimeEffect("Slow", this, duration);
 
                 break;
 
             case "Freeze":
-                Speed = 0;
+                IsFrozen = true;
                 Ote.OverTimeEffect("Freeze", this, duration);
                 break;
         }
@@ -45,12 +45,11 @@ public class Bat : BaseEnemy
         switch (effect)
         {
             case "Slow":
-                Speed = MaxSpeed;
-
+                SlowdownCount--;
                 break;
 
             case "Freeze":
-                Speed = MaxSpeed;
+                IsFrozen = false;
                 break;
         }
     }
