@@ -16,7 +16,7 @@ public class PierceTowerProjectile : BaseProjectile
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        
+        base._Ready();
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,7 +36,7 @@ public override void _on_Area2D_body_entered(Node2D body)
         }
 
         Connect(nameof(Hit), body, "onHit");
-        EmitSignal(nameof(Hit), Heal, Effect);
+        EmitSignal(nameof(Hit), Tower.Heal, Tower.Effect, Tower.EffectDuration);
 
         // Must be deferred as we can't change physics properties on a physics callback.
         GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);

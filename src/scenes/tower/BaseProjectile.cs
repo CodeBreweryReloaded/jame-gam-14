@@ -3,46 +3,54 @@ using System;
 
 public abstract class BaseProjectile : Node2D
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
-
-    [Export]
-    protected Vector2 Velocity = new Vector2(10, 0);
-    [Export]
     public Node2D Target { get; set; }
-    [Export]
-    protected float Heal => Tower.Heal;
-    [Export]
-    protected string Effect => Tower.Effect;
     [Signal]
     protected delegate void Hit();
     [Export]
     public BaseTower Tower { get; set; }
+    [Export]
+    private Texture texture;
+    [Export]
+    private NodePath visibilityPath;
 
+    private Vector2 targetVector = new Vector2();
+
+    private Lazy<VisibilityNotifier2D> lazyVisibility;
+    private VisibilityNotifier2D visibility => lazyVisibility.Value;
     
+    public BaseProjectile() {
+        lazyVisibility = new Lazy<VisibilityNotifier2D>(() => GetNode<VisibilityNotifier2D>(visibilityPath));
+    }
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready(){
-
+        Sprite sprite = new Sprite();
+        sprite.Texture = texture;
+        AddChild(sprite);
+        Update();
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(float delta)
+    public override void _PhysicsProcess(float delta)
     {
-        LookAt(Target.GlobalPosition);
-        Position += Velocity * delta;
+        Vector2 currentPosition = GlobalPosition;
+        if (IsInstanceValid(Target)) {
+            targetVector = Target.Position - currentPosition;
+        }
+        Vector2 nextVelocity = targetVector.Normalized() * Tower.ProjectileSpeed * delta;
+        GlobalPosition += nextVelocity;
+        if (!visibility.IsOnScreen())
+        {
+            QueueFree();
+        }
     }
+
 
     public virtual void _on_Area2D_body_entered(Node2D body)
     {
-        Hide(); 
-
         Connect(nameof(Hit), body, "onHit");
-        EmitSignal(nameof(Hit), Heal, Effect);
-
-        // Must be deferred as we can't change physics properties on a physics callback.
-        //GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
-        //TODO from tutorial copied maybe delete
+        EmitSignal(nameof(Hit), Tower.Heal, Tower.Effect, Tower.EffectDuration);
+        QueueFree();
     }
 
 

@@ -10,7 +10,9 @@ public abstract class BaseTower : Node2D
     [Export]
     protected int Range = 10;
     [Export]
-    protected float AttackSpeed = 10.0F;
+    protected int AttackSpeed = 4;
+    [Export]
+    public float ProjectileSpeed = 50.0f;
     [Export]
     protected float LevelFactor = 1.5F;
     [Export]
@@ -18,11 +20,20 @@ public abstract class BaseTower : Node2D
     [Export]
     public int Heal = 10;
     [Export]
-    public String Effect = "";
-    protected abstract PackedScene ProjectileScene { get; }
+    public String Effect = "";    
+    [Export]
+    public float EffectDuration = 0.0f;
+
+    [Export(PropertyHint.ResourceType, "PackedScene")]
+    protected PackedScene projectileScene;
+
     private HashSet<Node2D> InRangeList = new HashSet<Node2D>();
     [Export(PropertyHint.ResourceType, "NodePath")]
     private NodePath colliderPath;
+
+    private int tick = 0;
+
+    private BaseProjectile projectile;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -41,13 +52,27 @@ public abstract class BaseTower : Node2D
     //      
     //  }
 
+    public override void _PhysicsProcess(float delta)
+    {
+        base._PhysicsProcess(delta);
+        if (tick == 0) {
+            Shoot();
+        }
+
+        tick++;
+        tick %= AttackSpeed;
+    }
+
     protected virtual void Shoot()
     {
-        BaseProjectile proj = (BaseProjectile)ProjectileScene.Instance();
-        proj.Target = Searchtarget();
-        proj.Tower = this;
+        Node2D target = Searchtarget();
+        if (target != null) {
+            BaseProjectile proj = (BaseProjectile)projectileScene.Instance();
+            proj.Target = target;
+            proj.Tower = this;
 
-        GetParent().AddChild(proj);
+            AddChild(proj);
+        }
 
     }
 

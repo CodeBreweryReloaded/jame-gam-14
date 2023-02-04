@@ -9,7 +9,6 @@ public class PierceTower : BaseTower
     // private int a = 2;
     // private string b = "text";
 
-    protected override PackedScene ProjectileScene => GD.Load<PackedScene>("res://src/scenes/PierceTowerProjectile.tscn");
 
     [Export]
     public int Pierce = 2;
