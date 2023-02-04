@@ -3,15 +3,18 @@
 [ext_resource path="res://src/scenes/tower/BaseProjectile.cs" type="Script" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 2.5
 
 [node name="BaseProjectile" type="Node2D"]
 script = ExtResource( 1 )
+visibilityPath = NodePath("VisibilityNotifier2D")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
