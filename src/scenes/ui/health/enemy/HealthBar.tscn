@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/scripts/ui/HealthBar.cs" type="Script" id=1]
-[ext_resource path="res://src/scenes/ui/healthbar.png" type="Texture" id=2]
+[ext_resource path="res://src/scenes/ui/health/enemy/healthbar.png" type="Texture" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -31,6 +31,7 @@ color = Color( 0.380392, 0.0392157, 0.0392157, 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -2, -10 )

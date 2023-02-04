@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class TowerSelection : CanvasLayer
+public class BattleUI : CanvasLayer
 {
     private String currentTower;
 

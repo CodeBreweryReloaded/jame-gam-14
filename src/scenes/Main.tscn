@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/sprites/testbg-360.png" type="Texture" id=1]
 [ext_resource path="res://src/scenes/Main.cs" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/scenes/enemies/zombie/Zombie.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/scenes/castle/Castle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/scenes/enemies/bat/Bat.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/scenes/ui/BattleUI.tscn" type="PackedScene" id=7]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
@@ -38,3 +39,5 @@ Target = NodePath("../Castle")
 [node name="Castle" parent="." instance=ExtResource( 5 )]
 unique_name_in_owner = true
 position = Vector2( 616, 250 )
+
+[node name="BattleUI" parent="." instance=ExtResource( 7 )]

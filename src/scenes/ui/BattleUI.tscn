@@ -1,14 +1,14 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://src/scenes/ui/TowerSelection.cs" type="Script" id=1]
+[ext_resource path="res://src/scenes/ui/BattleUI.cs" type="Script" id=1]
 [ext_resource path="res://src/scenes/ui/button/tower/TowerButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/ui/button/pause/PauseButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scenes/ui/button/tower/tower-icon-placeholder-2.png" type="Texture" id=4]
-[ext_resource path="res://src/scenes/ui/health/PlayerHealth.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/scenes/ui/health/player/PlayerHealth.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/scenes/ui/button/tower/tower-icon-placeholder.png" type="Texture" id=6]
 [ext_resource path="res://src/scenes/ui/cursor/Cursor.tscn" type="PackedScene" id=7]
 
-[node name="TowerSelection" type="CanvasLayer"]
+[node name="BattleUI" type="CanvasLayer"]
 script = ExtResource( 1 )
 
 [node name="Cursor" parent="." instance=ExtResource( 7 )]
