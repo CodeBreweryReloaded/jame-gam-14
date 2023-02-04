@@ -41,7 +41,7 @@ margin_right = 598.0
 margin_bottom = 1.0
 
 [node name="PlayerHealth" parent="." instance=ExtResource( 5 )]
-position = Vector2( 263, 13 )
+position = Vector2( 263, 11 )
 CurrentHealth = 10
 
 [connection signal="ButtonPressed" from="AngryTower" to="Cursor" method="setSprite"]
