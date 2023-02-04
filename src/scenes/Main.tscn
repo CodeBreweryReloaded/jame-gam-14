@@ -26,13 +26,11 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 [node name="Zombie" parent="." instance=ExtResource( 4 )]
 position = Vector2( 15, 251 )
 Health = 6
-BaseSpeed = 30.0
 Target = NodePath("../Castle")
 
 [node name="Bat" parent="." instance=ExtResource( 6 )]
 position = Vector2( 37, 255 )
 Health = 6
-BaseSpeed = 30.0
 Target = NodePath("../Castle")
 
 [node name="Castle" parent="." instance=ExtResource( 5 )]

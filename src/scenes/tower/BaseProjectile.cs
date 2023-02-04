@@ -35,13 +35,14 @@ public abstract class BaseProjectile : Node2D
 
     public virtual void _on_Area2D_body_entered(Node2D body)
     {
-        Hide(); // Player disappears after being hit.
+        Hide(); 
 
         Connect(nameof(Hit), body, "onHit");
         EmitSignal(nameof(Hit), Heal, Effect);
 
         // Must be deferred as we can't change physics properties on a physics callback.
-        GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
+        //GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
+        //TODO from tutorial copied maybe delete
     }
 
 

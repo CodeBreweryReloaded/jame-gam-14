@@ -1,11 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/scenes/tower/BaseTower.cs" type="Script" id=1]
-[ext_resource path="res://src/scenes/tower/TowerRange.cs" type="Script" id=2]
 [ext_resource path="res://src/scenes/tower/CircleRange.cs" type="Script" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 26.0192
 
 [node name="BaseTower" type="Node2D"]
 script = ExtResource( 1 )
@@ -16,7 +14,6 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="."]
 
 [node name="TowerRange" type="Area2D" parent="."]
-script = ExtResource( 2 )
 
 [node name="RangeCircle" type="CollisionShape2D" parent="TowerRange"]
 shape = SubResource( 1 )
