@@ -47,5 +47,41 @@ public abstract class BaseEnemy : KinematicBody2D
         base._PhysicsProcess(delta);
     }
 
-    public abstract void onHit(int heal, string effect, int duration);
+    public virtual void onHit(int heal, string effect, int duration){
+        OverTimeEffectScene Ote = new OverTimeEffectScene();
+
+        Health += heal;
+        if (Health >= MaxHealth)
+        {
+            QueueFree(); //TODO Mob cured
+        }
+
+        switch (effect)
+        {
+            case "Slow":
+                SlowdownCount++;
+                Ote.OverTimeEffect("Slow", this, duration);
+
+                break;
+
+            case "Freeze":
+                IsFrozen = true;
+                Ote.OverTimeEffect("Freeze", this, duration);
+                break;
+        }
+
+    }
+
+    private void OnEndEffect(string effect){
+        switch (effect)
+        {
+            case "Slow":
+                SlowdownCount--;
+                break;
+
+            case "Freeze":
+                IsFrozen = false;
+                break;
+        }
+    }
 }
