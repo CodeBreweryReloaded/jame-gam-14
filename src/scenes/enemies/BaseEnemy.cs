@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public abstract class BaseEnemy : KinematicBody2D
+public abstract class BaseEnemy : KinematicBody2D, ITarget
 {
 
     [Export]
@@ -11,7 +11,7 @@ public abstract class BaseEnemy : KinematicBody2D
         set => healthBar.MaxHealth = value;
     }
 
-    
+
     [Export]
     public int Health
     {
@@ -30,24 +30,25 @@ public abstract class BaseEnemy : KinematicBody2D
     protected float Speed => IsFrozen ? 0 : BaseSpeed * (float)Math.Pow(0.7f, SlowdownCount);
 
     [Export]
-    protected NodePath Target;
+    public NodePath Target { get; set; }
 
 
-	private Lazy<HealthBar> healthBarLazy;
+    private Lazy<HealthBar> healthBarLazy;
 
-	protected HealthBar healthBar => healthBarLazy.Value;
+    protected HealthBar healthBar => healthBarLazy.Value;
 
-	public BaseEnemy()
-	{
-		healthBarLazy = new Lazy<HealthBar>(() => GetNode<HealthBar>("HealthBar"));
-	}
-    
+    public BaseEnemy()
+    {
+        healthBarLazy = new Lazy<HealthBar>(() => GetNode<HealthBar>("HealthBar"));
+    }
+
     public override void _PhysicsProcess(float delta)
     {
         base._PhysicsProcess(delta);
     }
 
-    public virtual void onHit(int heal, string effect, float effectDuration){
+    public virtual void onHit(int heal, string effect, float effectDuration)
+    {
         OverTimeEffectScene Ote = new OverTimeEffectScene();
 
         Health += heal;
@@ -72,7 +73,8 @@ public abstract class BaseEnemy : KinematicBody2D
 
     }
 
-    private void OnEndEffect(string effect){
+    private void OnEndEffect(string effect)
+    {
         switch (effect)
         {
             case "Slow":
