@@ -4,7 +4,8 @@
 [ext_resource path="res://src/scenes/enemies/bat/Bat.cs" type="Script" id=2]
 [ext_resource path="res://src/scenes/enemies/bat/batAnimate.tres" type="SpriteFrames" id=3]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 13, 4.25 )
 
 [node name="Bat" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -15,4 +16,5 @@ frames = ExtResource( 3 )
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+position = Vector2( 0, 0.75 )
 shape = SubResource( 1 )
