@@ -51,7 +51,7 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 
 [node name="Castle" parent="." instance=ExtResource( 5 )]
 unique_name_in_owner = true
-position = Vector2( 602, 270 )
+position = Vector2( 600, 257 )
 script = ExtResource( 12 )
 BattleUIPath = NodePath("../BattleUI")
 
@@ -60,7 +60,7 @@ BattleUIPath = NodePath("../BattleUI")
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 139, 275 )
 frames = SubResource( 5 )
-frame = 2
+frame = 7
 playing = true
 
 [node name="Spawner" parent="." instance=ExtResource( 8 )]
