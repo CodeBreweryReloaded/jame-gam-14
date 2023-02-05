@@ -11,5 +11,5 @@ dest_files=[ "res://.import/idle2.ogg-4970d96f91ab199932d506d25750e992.oggstr" ]
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

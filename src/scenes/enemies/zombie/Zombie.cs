@@ -6,6 +6,8 @@ public class Zombie : BaseEnemy
     protected NavigationAgent2D agent;
     protected Node2D anchor;
 
+    private float AudioInterval = 4.0f;
+
     [Export(PropertyHint.ResourceType, "NodePath")]
     protected NodePath agentPath;
 
@@ -14,6 +16,9 @@ public class Zombie : BaseEnemy
 
     [Export(PropertyHint.ResourceType, "Double")]
     private double randomDegrees = 70f;
+    private EnemyAudioPlayer enemyAudioPlayer;
+
+    private RandomEffectPlayer2D randomEffectPlayer2D;
 
     public override void _Ready()
     {
@@ -21,6 +26,14 @@ public class Zombie : BaseEnemy
         agent = GetNode<NavigationAgent2D>(agentPath);
         anchor = GetNode<Node2D>(anchorPath);
         agent.SetTargetLocation(TargetNode.GlobalPosition);
+
+        enemyAudioPlayer = GetNode<EnemyAudioPlayer>("AudioStreamPlayer2D");
+        Timer timer = new Timer();
+        timer.Autostart = true;
+        timer.OneShot = false;
+        timer.WaitTime = AudioInterval;
+        timer.Connect("timeout", this, nameof(AudioQueue));
+        AddChild(timer);
     }
 
     public override void _PhysicsProcess(float delta)
@@ -39,5 +52,11 @@ public class Zombie : BaseEnemy
 
     private double degreesToRadiant(double degrees) {
         return degrees * Math.PI / 180;
+    }
+
+
+    private void AudioQueue()
+    {
+        enemyAudioPlayer.PlayIdle();
     }
 }

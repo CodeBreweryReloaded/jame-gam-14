@@ -15,6 +15,7 @@ public class RandomEffectPlayer2D : AudioStreamPlayer2D
     public override void _Ready()
     {
         Connect("finished", this, nameof(changeSound));
+        Play();
     }
 
     private void changeSound()
@@ -31,6 +32,7 @@ public class RandomEffectPlayer2D : AudioStreamPlayer2D
                 Stream = nextStream;
             }
         }
+        Play();
     }
 
 }
