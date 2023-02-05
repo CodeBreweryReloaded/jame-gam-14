@@ -2,10 +2,10 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public class FlagZombie : BaseEnemy
+public class FlagZombie : Zombie
 {
     [Export]
-    private int Range = 10;
+    private int BuffRange = 10;
 
     [Export(PropertyHint.ResourceType, "NodePath")]
     private NodePath colliderPath;
@@ -20,9 +20,12 @@ public class FlagZombie : BaseEnemy
     {
         CollisionShape2D shape = new CollisionShape2D();
         CircleShape2D circle = new CircleShape2D();
-        circle.Radius = Range;
+        circle.Radius = BuffRange;
         shape.Shape = circle;
         GetNode<Node2D>(colliderPath).AddChild(shape);
+        agent = GetNode<NavigationAgent2D>(agentPath);
+        anchor = GetNode<Node2D>(anchorPath);
+        agent.SetTargetLocation(GetNode<Node2D>(Target).GlobalPosition);
         Update();
     }
 
