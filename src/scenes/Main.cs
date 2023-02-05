@@ -55,7 +55,7 @@ public class Main : Node2D
     private void onTowerSet(Pedestal pedestal, BaseTower tower) {
         try {
             UI.SpendMoney(tower.Cost);
-            pedestal.setTower(tower);
+            pedestal.SetTower(tower);
         } catch {
         }
     }

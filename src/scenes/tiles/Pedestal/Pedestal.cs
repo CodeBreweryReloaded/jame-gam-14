@@ -49,7 +49,7 @@ public class Pedestal : Node2D
         tower = null;
     }
 
-    public void setTower(BaseTower tower) {
+    public void SetTower(BaseTower tower) {
         if (!reserved && IsInstanceValid(tower)) {
             Color mod = tower.Modulate;
             mod.a = 1.0f;
