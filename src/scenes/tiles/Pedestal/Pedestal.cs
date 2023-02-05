@@ -43,6 +43,7 @@ public class Pedestal : Node2D
 
     public void onTowerDeselected() {
         availability.Hide();
+        tower = null;
     }
 
     private void onHover() {
