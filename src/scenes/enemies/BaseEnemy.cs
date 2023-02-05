@@ -66,6 +66,9 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
 
     [Signal]
     public delegate void OnCured(BaseEnemy enemy);
+
+    [Signal]
+    public delegate void onHitSignal(BaseEnemy self);
     
     public override void _PhysicsProcess(float delta)
     {
@@ -99,6 +102,8 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
                 healMultiplier += 0.2f;
                 break;
         }
+        
+        EmitSignal(nameof(onHitSignal), this);
     }
 
     protected virtual void Cured() {
