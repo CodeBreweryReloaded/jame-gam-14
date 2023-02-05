@@ -20,13 +20,14 @@ public class EnemyAudioPlayer : AudioStreamPlayer2D
         base._Ready();
     }
 
-    public void PlayHurt(BaseEnemy self)
+    public void PlayHurt()
     {
         int index = (int)Math.Round(GD.RandRange(0, HurtSounds.Length - 1));
         AudioStream nextStream = HurtSounds[index];
         if (RandomPitch)
         {
             randomPitch.AudioStream = nextStream;
+            Stream = randomPitch;
         }
         else
         {
@@ -44,6 +45,7 @@ public class EnemyAudioPlayer : AudioStreamPlayer2D
         if (RandomPitch)
         {
             randomPitch.AudioStream = nextStream;
+            Stream = randomPitch;
         }
         else
         {

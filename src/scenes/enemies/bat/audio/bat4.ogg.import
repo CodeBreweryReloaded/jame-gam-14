@@ -11,5 +11,5 @@ dest_files=[ "res://.import/bat4.ogg-bd753711a08a42c862ba2e8cc966aea3.oggstr" ]
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
