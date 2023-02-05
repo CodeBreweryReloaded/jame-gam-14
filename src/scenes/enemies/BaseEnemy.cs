@@ -32,6 +32,21 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
     [Export]
     public NodePath Target { get; set; }
 
+    private Node2D _targetNode;
+
+    public Node2D TargetNode
+    {
+        get
+        {
+            if (_targetNode == null && Target != null)
+                _targetNode = GetNode<Node2D>(Target);
+            return _targetNode;
+        }
+        set
+        {
+            _targetNode = value;
+        }
+    }
 
     private Lazy<HealthBar> healthBarLazy;
 

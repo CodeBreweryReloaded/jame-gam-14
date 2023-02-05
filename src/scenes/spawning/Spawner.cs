@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class Spawner : CompositeWave
 {
     [Export]
-    public override NodePath Target { get; set; }
+    public NodePath Target { get; set; }
 
     [Export]
     public NodePath SpawnPointPath { get; set; }
@@ -16,6 +16,9 @@ public class Spawner : CompositeWave
     public override void _Ready()
     {
         base._Ready();
+
+        TargetNode = GetNode<Node2D>(Target);
+
         Node2D spawnPoint = GetNode<Node2D>(SpawnPointPath);
         ActivateWave(spawnPoint);
     }

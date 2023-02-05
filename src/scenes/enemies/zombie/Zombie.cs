@@ -20,7 +20,7 @@ public class Zombie : BaseEnemy
         base._Ready();
         agent = GetNode<NavigationAgent2D>(agentPath);
         anchor = GetNode<Node2D>(anchorPath);
-        agent.SetTargetLocation(GetNode<Node2D>(Target).GlobalPosition);
+        agent.SetTargetLocation(TargetNode.GlobalPosition);
     }
 
     public override void _PhysicsProcess(float delta)

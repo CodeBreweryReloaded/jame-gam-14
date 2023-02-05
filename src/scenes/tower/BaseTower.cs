@@ -68,7 +68,7 @@ public abstract class BaseTower : Node2D
 
     protected virtual void Shoot()
     {
-        Node2D target = Searchtarget();
+        Node2D target = SearchTarget();
         if (target != null) {
             BaseProjectile proj = (BaseProjectile)projectileScene.Instance();
             proj.Target = target;
@@ -79,7 +79,7 @@ public abstract class BaseTower : Node2D
 
     }
 
-    protected virtual Node2D Searchtarget()
+    protected virtual Node2D SearchTarget()
     {
 		float distance = int.MaxValue;
 		Node2D closestEnemy = null;
