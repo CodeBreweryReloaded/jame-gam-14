@@ -29,6 +29,7 @@ public class Main : Node2D
             if (node is Pedestal pedestal) {
                 Connect(nameof(towerSelected), pedestal, nameof(Pedestal.onTowerSelected));
                 Connect(nameof(towerDeselected), pedestal, nameof(Pedestal.onTowerDeselected));
+                pedestal.Connect(nameof(Pedestal.TowerSet), this, nameof(onTowerSet));
             }
         }
 
@@ -49,5 +50,13 @@ public class Main : Node2D
 
     private void onTowerDeselected() {
         EmitSignal(nameof(towerDeselected));
+    }
+
+    private void onTowerSet(Pedestal pedestal, BaseTower tower) {
+        try {
+            UI.SpendMoney(tower.Cost);
+            pedestal.setTower(tower);
+        } catch {
+        }
     }
 }

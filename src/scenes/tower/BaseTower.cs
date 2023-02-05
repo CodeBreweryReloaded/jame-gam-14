@@ -24,6 +24,8 @@ public abstract class BaseTower : Node2D
     [Export]
     public float EffectDuration = 0.0f;
     [Export]
+    public int Cost { get; set; } = 50;
+    [Export]
     private Texture emblem;
 
     [Export(PropertyHint.ResourceType, "PackedScene")]
