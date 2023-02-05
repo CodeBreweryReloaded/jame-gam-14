@@ -7,7 +7,10 @@
 
 [node name="HealTower" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+Cost = 35
 Range = 150
+AttackSpeed = 45
 LevelFactor = 1.4
+Heal = 8
 emblem = ExtResource( 4 )
 projectileScene = ExtResource( 3 )

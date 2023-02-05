@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/scenes/ui/title/TitleAnim.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://src/scenes/ui/title/TitleScreen.cs" type="Script" id=2]
+[ext_resource path="res://src/scenes/ui/cursor/Cursor.tscn" type="PackedScene" id=5]
+
+[node name="Control" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 169.0
+margin_top = 241.0
+margin_right = 453.0
+margin_bottom = 316.0
+
+[node name="Cursor" parent="." instance=ExtResource( 5 )]
+pause_mode = 2
+position = Vector2( 349, 195 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = ExtResource( 1 )
+animation = "Normal"
+frame = 2
+playing = true
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="mouse_entered" from="Button" to="." method="hover"]
+[connection signal="mouse_exited" from="Button" to="." method="unhover"]
+[connection signal="pressed" from="Button" to="." method="click"]
