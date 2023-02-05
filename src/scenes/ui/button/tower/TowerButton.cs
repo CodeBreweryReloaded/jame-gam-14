@@ -6,8 +6,8 @@ public class TowerButton : AnimatedButton
     [Export(PropertyHint.ResourceType, "Texture")]
     private Texture towerSprite;
 
-    [Export(PropertyHint.ResourceType, "String")]
-    private String towerType = "";
+    [Export]
+    private PackedScene towerType;
 
     [Signal]
     delegate void ButtonPressed(Texture texture);
@@ -22,9 +22,8 @@ public class TowerButton : AnimatedButton
         set => active = value;
     }
 
-    public string TowerType {
+    public PackedScene TowerType {
         get => towerType;
-        set => towerType = value;
     }
 
     public override void _Ready()
