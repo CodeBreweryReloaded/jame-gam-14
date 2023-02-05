@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public class FlagZombie : KinematicBody2D
+public class FlagZombie : BaseEnemy
 {
     [Export]
     private int Range = 10;
