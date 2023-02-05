@@ -3,17 +3,17 @@ using System;
 
 public class Zombie : BaseEnemy
 {
-    private NavigationAgent2D agent;
-    private Node2D anchor;
+    protected NavigationAgent2D agent;
+    protected Node2D anchor;
 
     [Export(PropertyHint.ResourceType, "NodePath")]
-    private NodePath agentPath;
+    protected NodePath agentPath;
 
     [Export(PropertyHint.ResourceType, "NodePath")]
-    private NodePath anchorPath;
+    protected NodePath anchorPath;
 
     [Export(PropertyHint.ResourceType, "Double")]
-    private double randomRange = 1.0f;
+    private double randomDegrees = 70f;
 
     public override void _Ready()
     {
@@ -33,6 +33,11 @@ public class Zombie : BaseEnemy
         Vector2 nextPathPosition = agent.GetNextLocation();
         Vector2 nextVelocity = (nextPathPosition - currentPosition).Normalized() * Speed;
 
-        MoveAndSlide(nextVelocity);
+        double randomRadiants = degreesToRadiant(randomDegrees);
+        MoveAndSlide(nextVelocity.Rotated((float)GD.RandRange(-randomRadiants, randomRadiants)));
+    }
+
+    private double degreesToRadiant(double degrees) {
+        return degrees * Math.PI / 180;
     }
 }

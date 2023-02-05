@@ -24,12 +24,15 @@ public abstract class BaseTower : Node2D
     [Export]
     public float EffectDuration = 0.0f;
     [Export]
+    public int Cost { get; set; } = 50;
+    [Export]
     private Texture emblem;
 
     [Export(PropertyHint.ResourceType, "PackedScene")]
     protected PackedScene projectileScene;
 
     private HashSet<Node2D> InRangeList = new HashSet<Node2D>();
+    
     [Export(PropertyHint.ResourceType, "NodePath")]
     private NodePath colliderPath;
 
@@ -37,7 +40,6 @@ public abstract class BaseTower : Node2D
 
     private BaseProjectile projectile;
 
-    // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         GetNode<Sprite>("Emblem").Texture = emblem;
@@ -48,12 +50,6 @@ public abstract class BaseTower : Node2D
         GetNode<Node2D>(colliderPath).AddChild(shape);
         Update();
     }
-
-    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-    //  public override void _Process(float delta)
-    //  {
-    //      
-    //  }
 
     public override void _PhysicsProcess(float delta)
     {
@@ -81,14 +77,14 @@ public abstract class BaseTower : Node2D
 
     protected virtual Node2D SearchTarget()
     {
-		float distance = int.MaxValue;
-		Node2D closestEnemy = null;
+        float distance = int.MaxValue;
+        Node2D closestEnemy = null;
         foreach(Node2D Enemy in InRangeList){
-			if(Enemy.GlobalPosition.DistanceTo(this.GlobalPosition) < distance){
-				distance = Enemy.GlobalPosition.DistanceTo(this.GlobalPosition);
-				closestEnemy = Enemy;
-			}
-		}
+            if(Enemy.GlobalPosition.DistanceTo(this.GlobalPosition) < distance){
+                distance = Enemy.GlobalPosition.DistanceTo(this.GlobalPosition);
+                closestEnemy = Enemy;
+            }
+        }
         return closestEnemy;
     }
 
@@ -106,7 +102,7 @@ public abstract class BaseTower : Node2D
 
     protected virtual void _on_TowerRange_body_exited(Node2D body)
     {
-		InRangeList.Remove(body);
+        InRangeList.Remove(body);
     }
 
 }

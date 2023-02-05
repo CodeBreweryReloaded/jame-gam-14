@@ -18,6 +18,9 @@ public class Pedestal : Node2D
 
     private bool reserved = false;
 
+    [Signal]
+    public delegate void TowerSet(Pedestal pedestal, BaseTower tower);
+
     public override void _Ready()
     {
         availability = GetNode<Selection>(availabilityPath);
@@ -43,6 +46,18 @@ public class Pedestal : Node2D
 
     public void onTowerDeselected() {
         availability.Hide();
+        tower = null;
+    }
+
+    public void SetTower(BaseTower tower) {
+        if (!reserved && IsInstanceValid(tower)) {
+            Color mod = tower.Modulate;
+            mod.a = 1.0f;
+            tower.Modulate = mod;
+            tower.Show();
+            reserved = true;
+            availability.toggleAvailability();
+        }
     }
 
     private void onHover() {
@@ -58,13 +73,6 @@ public class Pedestal : Node2D
     }
 
     private void onTowerSet() {
-        if (!reserved && IsInstanceValid(tower)) {
-            Color mod = tower.Modulate;
-            mod.a = 1.0f;
-            tower.Modulate = mod;
-            tower.Show();
-            reserved = true;
-            availability.toggleAvailability();
-        }
+        EmitSignal(nameof(TowerSet), this, tower);
     }
 }

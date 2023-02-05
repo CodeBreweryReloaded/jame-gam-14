@@ -19,6 +19,8 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
         set => healthBar.Health = value;
     }
 
+    [Export]
+    public int Bounty { get; set; } = 50;
 
     [Export]
     protected float BaseSpeed = 1.0F;
@@ -62,6 +64,9 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
         healthBarLazy = new Lazy<HealthBar>(() => GetNode<HealthBar>("HealthBar"));
     }
 
+    [Signal]
+    public delegate void OnCured(BaseEnemy enemy);
+    
     public override void _PhysicsProcess(float delta)
     {
         base._PhysicsProcess(delta);
@@ -74,7 +79,7 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
         Health += (int)(heal * healMultiplier);
         if (Health >= MaxHealth)
         {
-            QueueFree(); //TODO Mob cured
+            Cured(); //TODO Mob cured
         }
 
         switch (effect)
@@ -94,7 +99,11 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
                 healMultiplier += 0.2f;
                 break;
         }
+    }
 
+    protected virtual void Cured() {
+        EmitSignal(nameof(OnCured), this);
+        QueueFree();
     }
 
     private void OnEndEffect(string effect)
@@ -113,5 +122,21 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
                 healMultiplier -= 0.2f;
                 break;
         }
+    }
+
+    private void Buff(){
+        BaseSpeed *= 1.2f;
+    }
+
+    private void DeBuff(){
+        BaseSpeed *= (1/1.2f);
+    }
+
+    private void OnEntered(){
+        Buff();
+    }
+
+    private void OnExited(){
+        DeBuff();
     }
 }
