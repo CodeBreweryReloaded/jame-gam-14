@@ -7,8 +7,11 @@
 
 [node name="FreezeTower" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-Range = 8
+Cost = 60
+Range = 110
+AttackSpeed = 60
 Heal = 2
+Effect = "Freeze"
 EffectDuration = 3.0
 emblem = ExtResource( 4 )
 projectileScene = ExtResource( 3 )
