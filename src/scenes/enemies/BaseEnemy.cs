@@ -66,11 +66,13 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
 
     [Signal]
     public delegate void OnCured(BaseEnemy enemy);
-    
+
+
     public override void _PhysicsProcess(float delta)
     {
         base._PhysicsProcess(delta);
     }
+
 
     public virtual void onHit(int heal, string effect, float effectDuration)
     {
@@ -101,7 +103,8 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
         }
     }
 
-    protected virtual void Cured() {
+    protected virtual void Cured()
+    {
         EmitSignal(nameof(OnCured), this);
         QueueFree();
     }
@@ -124,19 +127,23 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
         }
     }
 
-    private void Buff(){
+    private void Buff()
+    {
         BaseSpeed *= 1.2f;
     }
 
-    private void DeBuff(){
-        BaseSpeed *= (1/1.2f);
+    private void DeBuff()
+    {
+        BaseSpeed *= (1 / 1.2f);
     }
 
-    private void OnEntered(){
+    private void OnEntered()
+    {
         Buff();
     }
 
-    private void OnExited(){
+    private void OnExited()
+    {
         DeBuff();
     }
 }

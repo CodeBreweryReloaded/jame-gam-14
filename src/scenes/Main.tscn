@@ -60,7 +60,7 @@ BattleUIPath = NodePath("../BattleUI")
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 41, 240 )
 frames = SubResource( 5 )
-frame = 6
+frame = 1
 playing = true
 
 [node name="Spawner" parent="." instance=ExtResource( 8 )]
@@ -113,5 +113,7 @@ position = Vector2( 230, 250 )
 pause_mode = 2
 position = Vector2( 349, 195 )
 
+[connection signal="StartWave" from="BattleUI" to="Spawner" method="StartWave"]
 [connection signal="towerDeselected" from="BattleUI" to="." method="onTowerDeselected"]
 [connection signal="towerSelected" from="BattleUI" to="." method="onTowerSelected"]
+[connection signal="OnAllEnemiesCured" from="Spawner" to="BattleUI" method="WaveFinished"]

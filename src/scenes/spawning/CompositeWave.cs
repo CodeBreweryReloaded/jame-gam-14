@@ -5,6 +5,10 @@ using System.Linq;
 
 public class CompositeWave : Wave
 {
+
+    [Signal]
+    public delegate void SubWaveFinished();
+
     private List<Wave> waves = new List<Wave>();
 
     private int nextWave = 0;
@@ -14,6 +18,8 @@ public class CompositeWave : Wave
 
     [Export]
     private bool ActivateSimultaneously { get; set; } = false;
+
+    protected bool AutoPlayWaves { get; set; } = true;
 
 
     public override void _Ready()
@@ -30,20 +36,21 @@ public class CompositeWave : Wave
             nextWaveInstance.TargetNode = TargetNode;
             nextWaveInstance.ActivateWave(spawnPoint);
             // only call ActivateWave when the subwave finishes if ActivateSimultaneously is false as otherwise ActivateWave is called below
-            if (!ActivateSimultaneously)
+            if (!ActivateSimultaneously && AutoPlayWaves)
                 nextWaveInstance.Connect(nameof(WaveFinished), this, nameof(ActivateWave), new Array { spawnPoint });
 
             nextWaveInstance.Connect(nameof(WaveFinished), this, nameof(waveFinished));
 
             nextWave++;
 
-            if (ActivateSimultaneously)
+            if (ActivateSimultaneously && AutoPlayWaves)
                 Call(nameof(ActivateWave), spawnPoint);
         }
     }
 
     private void waveFinished()
     {
+        EmitSignal(nameof(SubWaveFinished));
         finishedWaveCounter++;
         if (finishedWaveCounter >= waves.Count)
         {

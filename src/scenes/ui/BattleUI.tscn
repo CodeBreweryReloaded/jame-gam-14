@@ -51,7 +51,7 @@ CurrentHealth = 2
 
 [node name="MoneyCounter" parent="." instance=ExtResource( 8 )]
 position = Vector2( 14, 13 )
-frame = 0
+frame = 1
 
 [node name="NextRoundButton" parent="." instance=ExtResource( 11 )]
 margin_left = 513.0
@@ -59,8 +59,9 @@ margin_top = 308.0
 margin_right = 513.0
 margin_bottom = 308.0
 
+[connection signal="towerDeselected" from="." to="Cursor" method="onTowerDeselected"]
 [connection signal="ButtonPressed" from="AngryTower" to="Cursor" method="setSprite"]
 [connection signal="TowerSelected" from="AngryTower" to="." method="onTowerSelected"]
 [connection signal="ButtonPressed" from="HappyTower" to="Cursor" method="setSprite"]
 [connection signal="TowerSelected" from="HappyTower" to="." method="onTowerSelected"]
-[connection signal="towerDeselected" from="." to="Cursor" method="onTowerDeselected"]
+[connection signal="ButtonPressed" from="NextRoundButton" to="." method="StartWaveListener"]

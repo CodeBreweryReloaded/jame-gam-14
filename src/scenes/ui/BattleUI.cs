@@ -10,11 +10,16 @@ public class BattleUI : CanvasLayer
     [Signal]
     delegate void towerDeselected();
 
+    [Signal]
+    public delegate void StartWave();
+
     private PlayerHealth playerHealth => GetNode<PlayerHealth>("PlayerHealth");
+
+    private Control nextRoundButton;
 
     public override void _Ready()
     {
-
+        nextRoundButton = GetNode<Control>("NextRoundButton");
     }
 
     public void Damage(int damage)
@@ -55,5 +60,16 @@ public class BattleUI : CanvasLayer
         {
             EmitSignal(nameof(towerSelected), towerButton.TowerType);
         }
+    }
+
+    public void WaveFinished()
+    {
+        nextRoundButton.Visible = true;
+    }
+
+    public void StartWaveListener()
+    {
+        nextRoundButton.Visible = false;
+        EmitSignal(nameof(StartWave));
     }
 }
