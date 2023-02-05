@@ -78,6 +78,7 @@ public class EnemyWave : Wave
         enemy.MaxHealth = MaxHealth;
         enemy.Health = 1;
         spawnPoint.AddChild(enemy);
+        OnSpawned(enemy);
         GD.Print($"Spawned enemy {EnemyScene.ResourceName} with MaxHealth {MaxHealth} ({alreadySpawned}/{Count})");
     }
 

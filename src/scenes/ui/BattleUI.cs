@@ -15,6 +15,10 @@ public class BattleUI : CanvasLayer
         
     }
 
+    public void AddMoney(int amount) {
+        GetNode<MoneyCounter>("MoneyCounter").addMoney(amount);
+    }
+
     public void onTowerSelected(TowerButton towerButton) {
         currentTower = towerButton?.TowerType;
         foreach (Node node in GetChildren())

@@ -22,5 +22,4 @@ public class Spawner : CompositeWave
         Node2D spawnPoint = GetNode<Node2D>(SpawnPointPath);
         ActivateWave(spawnPoint);
     }
-
 }

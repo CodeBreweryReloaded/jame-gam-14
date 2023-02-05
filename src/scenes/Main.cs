@@ -4,12 +4,21 @@ using System.Collections.Generic;
 
 public class Main : Node2D
 {
+    private Lazy<BattleUI> ui;
+
     private List<Pedestal> pedestals;
+
+    protected BattleUI UI => ui.Value;
 
     [Signal]
     delegate void towerSelected(PackedScene towerType);
     [Signal]
     delegate void towerDeselected();
+
+    public Main()
+    {
+        ui = new Lazy<BattleUI>(() => GetNode<BattleUI>("BattleUI"));
+    }
 
     public override void _Ready()
     {
@@ -22,6 +31,16 @@ public class Main : Node2D
                 Connect(nameof(towerDeselected), pedestal, nameof(Pedestal.onTowerDeselected));
             }
         }
+
+        GetNode<Spawner>("Spawner").Connect(nameof(Wave.EnemySpawned), this, nameof(onSpawned));
+    }
+
+    private void onSpawned(BaseEnemy enemy) {
+        enemy.Connect(nameof(BaseEnemy.OnCured), this, nameof(onCured));
+    }
+
+    private void onCured(BaseEnemy enemy) {
+        UI.AddMoney(enemy.Bounty);
     }
 
     private void onTowerSelected(PackedScene towerType) {

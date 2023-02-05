@@ -26,6 +26,7 @@ public class CompositeWave : Wave
         if (nextWave < waves.Count)
         {
             GD.Print($"Activating wave {nextWave} of {waves.Count} ({nextWaveInstance.GetType().Name})");
+            nextWaveInstance.Connect(nameof(Wave.EnemySpawned), this, nameof(OnSpawned));
             nextWaveInstance.TargetNode = TargetNode;
             nextWaveInstance.ActivateWave(spawnPoint);
             // only call ActivateWave when the subwave finishes if ActivateSimultaneously is false as otherwise ActivateWave is called below
@@ -49,6 +50,4 @@ public class CompositeWave : Wave
             EmitSignal(nameof(WaveFinished));
         }
     }
-
-
 }
