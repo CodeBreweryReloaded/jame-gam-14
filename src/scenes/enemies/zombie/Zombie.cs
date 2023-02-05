@@ -13,7 +13,7 @@ public class Zombie : BaseEnemy
     protected NodePath anchorPath;
 
     [Export(PropertyHint.ResourceType, "Double")]
-    protected double randomRange = 1.0f;
+    private double randomDegrees = 70f;
 
     public override void _Ready()
     {
@@ -33,6 +33,11 @@ public class Zombie : BaseEnemy
         Vector2 nextPathPosition = agent.GetNextLocation();
         Vector2 nextVelocity = (nextPathPosition - currentPosition).Normalized() * Speed;
 
-        MoveAndSlide(nextVelocity);
+        double randomRadiants = degreesToRadiant(randomDegrees);
+        MoveAndSlide(nextVelocity.Rotated((float)GD.RandRange(-randomRadiants, randomRadiants)));
+    }
+
+    private double degreesToRadiant(double degrees) {
+        return degrees * Math.PI / 180;
     }
 }
