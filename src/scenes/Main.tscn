@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/scenes/tiles/Pedestal/Pedestal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/scenes/Main.cs" type="Script" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://src/scenes/spawning/CompositeWave.cs" type="Script" id=11]
 [ext_resource path="res://src/scenes/castle/Castle.cs" type="Script" id=12]
 [ext_resource path="res://src/scenes/ui/cursor/Cursor.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/scenes/enemies/FlagZombie/FlagZombie.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/scenes/spawning/CompositeWave.tscn" type="PackedScene" id=15]
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 9 )
@@ -60,7 +62,7 @@ BattleUIPath = NodePath("../BattleUI")
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 139, 275 )
 frames = SubResource( 5 )
-frame = 5
+frame = 4
 playing = true
 
 [node name="Spawner" parent="." instance=ExtResource( 8 )]
@@ -99,6 +101,65 @@ MaxHealth = 10
 Count = 10
 DurationInSeconds = 10.0
 CoolDownInSeconds = 5.0
+
+[node name="FlagZombie" parent="Spawner/Wave2" instance=ExtResource( 10 )]
+EnemyScene = ExtResource( 14 )
+MaxHealth = 100
+Count = 1
+StartTimeoutInSeconds = 10.0
+
+[node name="Wave3" parent="Spawner" instance=ExtResource( 15 )]
+
+[node name="Bats" parent="Spawner/Wave3" instance=ExtResource( 10 )]
+EnemyScene = ExtResource( 6 )
+MaxHealth = 5
+Count = 30
+CoolDownInSeconds = 1.0
+
+[node name="FlagZombie" parent="Spawner/Wave3" instance=ExtResource( 10 )]
+EnemyScene = ExtResource( 14 )
+
+[node name="Zombies" parent="Spawner/Wave3" instance=ExtResource( 10 )]
+EnemyScene = ExtResource( 4 )
+MaxHealth = 30
+Count = 10
+StartTimeoutInSeconds = 30.0
+CoolDownInSeconds = 2.0
+
+[node name="Wave4" type="Node" parent="Spawner"]
+script = ExtResource( 11 )
+ActivateSimultaneously = true
+
+[node name="Zombies" parent="Spawner/Wave4" instance=ExtResource( 10 )]
+EnemyScene = ExtResource( 4 )
+MaxHealth = 10
+Count = 10
+DurationInSeconds = 10.0
+CoolDownInSeconds = 5.0
+
+[node name="FlagZombie" parent="Spawner/Wave4" instance=ExtResource( 10 )]
+EnemyScene = ExtResource( 14 )
+MaxHealth = 100
+Count = 1
+StartTimeoutInSeconds = 10.0
+
+[node name="Wave5" parent="Spawner" instance=ExtResource( 15 )]
+
+[node name="Bats" parent="Spawner/Wave5" instance=ExtResource( 10 )]
+EnemyScene = ExtResource( 6 )
+MaxHealth = 5
+Count = 30
+CoolDownInSeconds = 1.0
+
+[node name="FlagZombie" parent="Spawner/Wave5" instance=ExtResource( 10 )]
+EnemyScene = ExtResource( 14 )
+
+[node name="Zombies" parent="Spawner/Wave5" instance=ExtResource( 10 )]
+EnemyScene = ExtResource( 4 )
+MaxHealth = 30
+Count = 10
+StartTimeoutInSeconds = 30.0
+CoolDownInSeconds = 2.0
 
 [node name="Pedestal" parent="." instance=ExtResource( 1 )]
 position = Vector2( 180, 40 )
