@@ -12,3 +12,4 @@ data_*/
 
 .DS_Store
 build/
+*_wal

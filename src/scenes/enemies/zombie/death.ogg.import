@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/death.ogg-9bd96f86c965d8073d52c9e8e9472a01.oggstr"
+
+[deps]
+
+source_file="res://src/scenes/enemies/zombie/death.ogg"
+dest_files=[ "res://.import/death.ogg-9bd96f86c965d8073d52c9e8e9472a01.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

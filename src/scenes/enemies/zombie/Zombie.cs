@@ -6,6 +6,8 @@ public class Zombie : BaseEnemy
     protected NavigationAgent2D agent;
     protected Node2D anchor;
 
+
+
     [Export(PropertyHint.ResourceType, "NodePath")]
     protected NodePath agentPath;
 
@@ -21,6 +23,14 @@ public class Zombie : BaseEnemy
         agent = GetNode<NavigationAgent2D>(agentPath);
         anchor = GetNode<Node2D>(anchorPath);
         agent.SetTargetLocation(TargetNode.GlobalPosition);
+
+        enemyAudioPlayer = GetNode<EnemyAudioPlayer>("AudioStreamPlayer2D");
+        Timer timer = new Timer();
+        timer.Autostart = true;
+        timer.OneShot = false;
+        timer.WaitTime = AudioInterval;
+        timer.Connect("timeout", this, nameof(AudioQueue));
+        AddChild(timer);
     }
 
     public override void _PhysicsProcess(float delta)
@@ -40,4 +50,7 @@ public class Zombie : BaseEnemy
     private double degreesToRadiant(double degrees) {
         return degrees * Math.PI / 180;
     }
+
+
+
 }

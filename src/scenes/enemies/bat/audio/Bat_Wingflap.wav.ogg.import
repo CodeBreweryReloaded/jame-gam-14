@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Bat_Wingflap.wav.ogg-10bc1246c3b2ce9bbfcf35777a87988b.oggstr"
+
+[deps]
+
+source_file="res://src/scenes/enemies/bat/audio/Bat_Wingflap.wav.ogg"
+dest_files=[ "res://.import/Bat_Wingflap.wav.ogg-10bc1246c3b2ce9bbfcf35777a87988b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
