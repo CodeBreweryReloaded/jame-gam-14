@@ -32,6 +32,7 @@
 *.bmp filter=lfs diff=lfs merge=lfs -text
 # Fonts
 *.ttf filter=lfs diff=lfs merge=lfs -text
+*.otf filter=lfs diff=lfs merge=lfs -text
 # Videos
 *.mp4 filter=lfs diff=lfs merge=lfs -text
 # Project files

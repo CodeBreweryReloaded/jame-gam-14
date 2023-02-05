@@ -23,6 +23,8 @@ public abstract class BaseTower : Node2D
     public String Effect = "";    
     [Export]
     public float EffectDuration = 0.0f;
+    [Export]
+    private Texture emblem;
 
     [Export(PropertyHint.ResourceType, "PackedScene")]
     protected PackedScene projectileScene;
@@ -38,6 +40,7 @@ public abstract class BaseTower : Node2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        GetNode<Sprite>("Emblem").Texture = emblem;
         CollisionShape2D shape = new CollisionShape2D();
         CircleShape2D circle = new CircleShape2D();
         circle.Radius = Range;
