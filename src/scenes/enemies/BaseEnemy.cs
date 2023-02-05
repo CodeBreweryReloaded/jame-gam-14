@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public abstract class BaseEnemy : KinematicBody2D
+public abstract class BaseEnemy : KinematicBody2D, ITarget
 {
 
     [Export]
@@ -11,7 +11,7 @@ public abstract class BaseEnemy : KinematicBody2D
         set => healthBar.MaxHealth = value;
     }
 
-    
+
     [Export]
     public int Health
     {
@@ -32,24 +32,40 @@ public abstract class BaseEnemy : KinematicBody2D
     protected float healMultiplier = 1;
 
     [Export]
-    protected NodePath Target;
+    public NodePath Target { get; set; }
 
+    private Node2D _targetNode;
 
-	private Lazy<HealthBar> healthBarLazy;
+    public Node2D TargetNode
+    {
+        get
+        {
+            if (_targetNode == null && Target != null)
+                _targetNode = GetNode<Node2D>(Target);
+            return _targetNode;
+        }
+        set
+        {
+            _targetNode = value;
+        }
+    }
 
-	protected HealthBar healthBar => healthBarLazy.Value;
+    private Lazy<HealthBar> healthBarLazy;
 
-	public BaseEnemy()
-	{
-		healthBarLazy = new Lazy<HealthBar>(() => GetNode<HealthBar>("HealthBar"));
-	}
-    
+    protected HealthBar healthBar => healthBarLazy.Value;
+
+    public BaseEnemy()
+    {
+        healthBarLazy = new Lazy<HealthBar>(() => GetNode<HealthBar>("HealthBar"));
+    }
+
     public override void _PhysicsProcess(float delta)
     {
         base._PhysicsProcess(delta);
     }
 
-    public virtual void onHit(int heal, string effect, float effectDuration){
+    public virtual void onHit(int heal, string effect, float effectDuration)
+    {
         OverTimeEffectScene Ote = new OverTimeEffectScene();
 
         Health += (int)(heal * healMultiplier);
@@ -78,7 +94,8 @@ public abstract class BaseEnemy : KinematicBody2D
 
     }
 
-    private void OnEndEffect(string effect){
+    private void OnEndEffect(string effect)
+    {
         switch (effect)
         {
             case "Slow":
@@ -93,5 +110,21 @@ public abstract class BaseEnemy : KinematicBody2D
                 healMultiplier -= 0.2f;
                 break;
         }
+    }
+
+    private void Buff(){
+        BaseSpeed *= 1.2f;
+    }
+
+    private void DeBuff(){
+        BaseSpeed *= (1/1.2f);
+    }
+
+    private void OnEntered(){
+        Buff();
+    }
+
+    private void OnExited(){
+        DeBuff();
     }
 }

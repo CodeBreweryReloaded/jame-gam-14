@@ -30,6 +30,7 @@ public abstract class BaseTower : Node2D
     protected PackedScene projectileScene;
 
     private HashSet<Node2D> InRangeList = new HashSet<Node2D>();
+    
     [Export(PropertyHint.ResourceType, "NodePath")]
     private NodePath colliderPath;
 
@@ -37,7 +38,6 @@ public abstract class BaseTower : Node2D
 
     private BaseProjectile projectile;
 
-    // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         GetNode<Sprite>("Emblem").Texture = emblem;
@@ -48,12 +48,6 @@ public abstract class BaseTower : Node2D
         GetNode<Node2D>(colliderPath).AddChild(shape);
         Update();
     }
-
-    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-    //  public override void _Process(float delta)
-    //  {
-    //      
-    //  }
 
     public override void _PhysicsProcess(float delta)
     {
@@ -68,7 +62,7 @@ public abstract class BaseTower : Node2D
 
     protected virtual void Shoot()
     {
-        Node2D target = Searchtarget();
+        Node2D target = SearchTarget();
         if (target != null) {
             BaseProjectile proj = (BaseProjectile)projectileScene.Instance();
             proj.Target = target;
@@ -79,7 +73,7 @@ public abstract class BaseTower : Node2D
 
     }
 
-    protected virtual Node2D Searchtarget()
+    protected virtual Node2D SearchTarget()
     {
 		float distance = int.MaxValue;
 		Node2D closestEnemy = null;

@@ -3,24 +3,24 @@ using System;
 
 public class Zombie : BaseEnemy
 {
-    private NavigationAgent2D agent;
-    private Node2D anchor;
+    protected NavigationAgent2D agent;
+    protected Node2D anchor;
 
     [Export(PropertyHint.ResourceType, "NodePath")]
-    private NodePath agentPath;
+    protected NodePath agentPath;
 
     [Export(PropertyHint.ResourceType, "NodePath")]
-    private NodePath anchorPath;
+    protected NodePath anchorPath;
 
     [Export(PropertyHint.ResourceType, "Double")]
-    private double randomRange = 1.0f;
+    protected double randomRange = 1.0f;
 
     public override void _Ready()
     {
         base._Ready();
         agent = GetNode<NavigationAgent2D>(agentPath);
         anchor = GetNode<Node2D>(anchorPath);
-        agent.SetTargetLocation(GetNode<Node2D>(Target).GlobalPosition);
+        agent.SetTargetLocation(TargetNode.GlobalPosition);
     }
 
     public override void _PhysicsProcess(float delta)

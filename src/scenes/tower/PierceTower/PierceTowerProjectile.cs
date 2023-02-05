@@ -8,8 +8,6 @@ public class PierceTowerProjectile : BaseProjectile
     // Declare member variables here. Examples:
     // private int a = 2;
     // private string b = "text";
-    [Export]
-    private int MaxPierce => ((PierceTower)Tower).Pierce;
     private int PierceCount = 0;
     private HashSet<Node2D> HitList = new HashSet<Node2D>();
     private Vector2 targetVector = new Vector2();
@@ -52,7 +50,7 @@ public class PierceTowerProjectile : BaseProjectile
         {
             PierceCount++;
         }
-        if (PierceCount >= MaxPierce)
+        if (PierceCount >= ((PierceTower)Tower).Pierce)
         {
             QueueFree();
         }

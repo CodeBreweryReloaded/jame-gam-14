@@ -29,6 +29,7 @@ extents = Vector2( 9, 10 )
 
 [node name="Zombie" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+MaxHealth = 10
 BaseSpeed = 10.0
 agentPath = NodePath("Anchor/NavigationAgent2D")
 anchorPath = NodePath("Anchor")
@@ -36,7 +37,6 @@ randomRange = 1.0
 
 [node name="EnemySprite" parent="." index="0"]
 frames = SubResource( 5 )
-frame = 2
 
 [node name="Hitbox" type="CollisionShape2D" parent="." index="2"]
 shape = SubResource( 2 )
@@ -47,3 +47,8 @@ position = Vector2( -1, 8 )
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Anchor" index="0"]
 unique_name_in_owner = true
 avoidance_enabled = true
+
+[node name="BuffRangeNode" type="Area2D" parent="." index="4"]
+
+[connection signal="body_entered" from="BuffRangeNode" to="." method="_on_BuffRangeNode_body_entered"]
+[connection signal="body_exited" from="BuffRangeNode" to="." method="_on_BuffRangeNode_body_exited"]
