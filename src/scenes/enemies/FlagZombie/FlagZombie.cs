@@ -6,11 +6,8 @@ public class FlagZombie : Zombie
 {
     [Export]
     private int BuffRange = 10;
-
     [Export(PropertyHint.ResourceType, "NodePath")]
     private NodePath colliderPath;
-    private HashSet<Node2D> InRangeList = new HashSet<Node2D>();
-
     [Signal]
     protected delegate void Entered();
     [Signal]
@@ -36,23 +33,21 @@ public class FlagZombie : Zombie
     }
 
 
-    protected virtual void _on_BuffRange_body_entered(Node2D body)
+    protected virtual void _on_BuffRangeNode_body_entered(Node2D body)
     {
-        if (body is BaseEnemy)
+        if (body is BaseEnemy  && !(body is FlagZombie))
         {
-            InRangeList.Add(body);
             Connect(nameof(Entered), body, "OnEntered");
             EmitSignal(nameof(Entered));
         }
         
     }
 
-    protected virtual void _on_BuffRange_body_exited(Node2D body)
+    protected virtual void _on_BuffRangeNode_body_exited(Node2D body)
     {
 
-        if (body is BaseEnemy)
+        if (body is BaseEnemy && !(body is FlagZombie))
         {
-            InRangeList.Remove(body);
             Connect(nameof(Exited), body, "OnExited");
             EmitSignal(nameof(Exited));
         }

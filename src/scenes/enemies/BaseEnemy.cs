@@ -100,7 +100,7 @@ public abstract class BaseEnemy : KinematicBody2D
     }
 
     private void DeBuff(){
-        BaseSpeed *= (10/12);
+        BaseSpeed *= (1/1.2f);
     }
 
     private void OnEntered(){

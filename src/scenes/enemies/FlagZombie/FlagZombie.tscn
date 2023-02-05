@@ -5,6 +5,7 @@
 
 [node name="FlagZombie" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-
-[node name="EnemySprite" parent="." index="0"]
-frame = 0
+MaxHealth = 100
+BaseSpeed = 24.0
+BuffRange = 40
+colliderPath = NodePath("BuffRangeNode")
