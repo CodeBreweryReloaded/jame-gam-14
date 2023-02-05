@@ -62,7 +62,7 @@ BattleUIPath = NodePath("../BattleUI")
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 139, 275 )
 frames = SubResource( 5 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="Spawner" parent="." instance=ExtResource( 8 )]
