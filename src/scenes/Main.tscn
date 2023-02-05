@@ -1,20 +1,15 @@
-
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/scenes/tiles/Pedestal/Pedestal.tscn" type="PackedScene" id=1]
-
 [ext_resource path="res://src/scenes/Main.cs" type="Script" id=2]
 [ext_resource path="res://src/scenes/tiles/Road.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scenes/enemies/zombie/Zombie.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/scenes/castle/Castle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/scenes/enemies/bat/Bat.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/scenes/ui/BattleUI.tscn" type="PackedScene" id=7]
-
 [ext_resource path="res://src/scenes/spawning/Spawner.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/scenes/tower/FreezeTower/FreezeTower.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/scenes/spawning/Wave.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/scenes/spawning/CompositeWave.cs" type="Script" id=11]
-
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
@@ -32,14 +27,6 @@ unique_name_in_owner = true
 position = Vector2( 616, 250 )
 
 [node name="BattleUI" parent="." instance=ExtResource( 7 )]
-
-
-[node name="FreezeTower" parent="." instance=ExtResource( 9 )]
-position = Vector2( 280, 132 )
-Range = 150
-AttackSpeed = 60
-Effect = "Freeze"
-EffectDuration = 0.75
 
 [node name="Spawner" parent="." instance=ExtResource( 8 )]
 Target = NodePath("../Castle")
@@ -88,4 +75,3 @@ position = Vector2( 230, 250 )
 
 [connection signal="towerDeselected" from="BattleUI" to="." method="onTowerDeselected"]
 [connection signal="towerSelected" from="BattleUI" to="." method="onTowerSelected"]
-
