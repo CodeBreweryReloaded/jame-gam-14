@@ -60,7 +60,6 @@ BattleUIPath = NodePath("../BattleUI")
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 139, 275 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="Spawner" parent="." instance=ExtResource( 8 )]
@@ -92,6 +91,7 @@ CoolDownInSeconds = 5.0
 
 [node name="Wave2" type="Node" parent="Spawner"]
 script = ExtResource( 11 )
+Enabled = false
 ActivateSimultaneously = true
 
 [node name="Zombies" parent="Spawner/Wave2" instance=ExtResource( 10 )]
@@ -108,7 +108,6 @@ position = Vector2( 180, 40 )
 pause_mode = 2
 position = Vector2( 349, 195 )
 
-[connection signal="StartWave" from="BattleUI" to="Spawner" method="StartWave"]
 [node name="Pedestal3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 280, 259 )
 
@@ -136,6 +135,8 @@ position = Vector2( 430, 250 )
 [node name="Pedestal11" parent="." instance=ExtResource( 1 )]
 position = Vector2( 510, 250 )
 
+[connection signal="StartWave" from="BattleUI" to="Spawner" method="StartWave"]
 [connection signal="towerDeselected" from="BattleUI" to="." method="onTowerDeselected"]
 [connection signal="towerSelected" from="BattleUI" to="." method="onTowerSelected"]
+[connection signal="GameWon" from="Spawner" to="BattleUI" method="GameWon"]
 [connection signal="OnAllEnemiesCured" from="Spawner" to="BattleUI" method="WaveFinished"]

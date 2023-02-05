@@ -33,6 +33,7 @@ public class Spawner : CompositeWave
 
         spawnPointNode = GetNode<Node2D>(SpawnPointPath);
         Connect(nameof(EnemySpawned), this, nameof(onEnemySpawned));
+        Connect(nameof(WaveFinished), this, nameof(onWaveFinished));
     }
 
 
@@ -53,13 +54,19 @@ public class Spawner : CompositeWave
     {
         enemySpawned--;
         GD.Print($"Enemy exited tree, {enemySpawned} enemies left");
+        onWaveFinished();
+    }
+
+    private void onWaveFinished()
+    {
         if (enemySpawned <= 0)
         {
             EmitSignal(nameof(OnAllEnemiesCured));
             if (FinishedWaveCounter >= WaveCount)
             {
-                GetTree().ChangeScene("res://src/scenes/ui/WinnerScreen.tscn");
+                EmitSignal(nameof(GameWon));
             }
         }
     }
+
 }

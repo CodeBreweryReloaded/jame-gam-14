@@ -72,4 +72,12 @@ public class BattleUI : CanvasLayer
         nextRoundButton.Visible = false;
         EmitSignal(nameof(StartWave));
     }
+
+    public void GameWon()
+    {
+        if (playerHealth.CurrentHealth > 0)
+        {
+            GetTree().ChangeScene("res://src/scenes/ui/WinnerScreen.tscn");
+        }
+    }
 }
