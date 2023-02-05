@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/idle1.ogg-291f285429cb43474c1b4ab119ab4b67.oggstr"
+
+[deps]
+
+source_file="res://src/scenes/enemies/zombie/idle1.ogg"
+dest_files=[ "res://.import/idle1.ogg-291f285429cb43474c1b4ab119ab4b67.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

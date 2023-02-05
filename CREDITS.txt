@@ -1,0 +1,42 @@
+Title:
+    RPG Sound Pack
+
+Author:
+    artisticdude
+
+URL:
+    https://opengameart.org/content/rpg-sound-pack
+
+License(s):
+    * CC0
+
+File(s):
+    * res://src/scenes/enemies/zombie/audio/damage1.ogg
+    * res://src/scenes/enemies/zombie/audio/damage2.ogg
+    * res://src/scenes/enemies/zombie/audio/damage3.ogg
+    * res://src/scenes/enemies/zombie/audio/damage4.ogg
+    * res://src/scenes/enemies/zombie/audio/damage5.ogg
+    * res://src/scenes/enemies/zombie/audio/idle1.ogg
+    * res://src/scenes/enemies/zombie/audio/idle2.ogg
+    * res://src/scenes/enemies/zombie/audio/idle3.ogg
+
+----------------------------------------
+
+Title:
+    Bat Screeches
+
+Author:
+    AntumDeluge
+
+URL:
+    https://opengameart.org/content/bat-screeches
+
+License(s):
+    * CC0
+
+File(s):
+    * res://src/scenes/enemies/bat/audio/bat1.ogg
+    * res://src/scenes/enemies/bat/audio/bat2.ogg
+    * res://src/scenes/enemies/bat/audio/bat3.ogg
+    * res://src/scenes/enemies/bat/audio/bat4.ogg
+    * res://src/scenes/enemies/bat/audio/bat5.ogg

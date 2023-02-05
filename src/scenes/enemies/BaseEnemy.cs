@@ -58,6 +58,8 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
     private Lazy<HealthBar> healthBarLazy;
 
     protected HealthBar healthBar => healthBarLazy.Value;
+    protected EnemyAudioPlayer enemyAudioPlayer;
+    protected float AudioInterval = 5.0f;
 
     public BaseEnemy()
     {
@@ -67,6 +69,9 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
     [Signal]
     public delegate void OnCured(BaseEnemy enemy);
 
+
+    [Signal]
+    public delegate void onHitSignal(BaseEnemy self);
 
     public override void _PhysicsProcess(float delta)
     {
@@ -82,6 +87,10 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
         if (Health >= MaxHealth)
         {
             Cured(); //TODO Mob cured
+        }
+        else
+        {
+            enemyAudioPlayer.PlayHurt();
         }
 
         switch (effect)
@@ -101,10 +110,13 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
                 healMultiplier += 0.2f;
                 break;
         }
+
+        EmitSignal(nameof(onHitSignal), this);
     }
 
     protected virtual void Cured()
     {
+        enemyAudioPlayer.PlayDeath();
         EmitSignal(nameof(OnCured), this);
         QueueFree();
     }
@@ -145,5 +157,10 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
     private void OnExited()
     {
         DeBuff();
+    }
+
+    protected void AudioQueue()
+    {
+        enemyAudioPlayer.PlayIdle();
     }
 }

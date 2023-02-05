@@ -17,7 +17,6 @@ colliderPath = NodePath("BuffRangeNode")
 [node name="EnemySprite" parent="." index="0"]
 position = Vector2( -11, -14 )
 frames = ExtResource( 3 )
-frame = 2
 offset = Vector2( 27, 2 )
 
 [node name="HealthBar" parent="." index="1"]

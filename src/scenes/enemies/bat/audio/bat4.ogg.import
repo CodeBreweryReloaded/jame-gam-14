@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bat4.ogg-bd753711a08a42c862ba2e8cc966aea3.oggstr"
+
+[deps]
+
+source_file="res://src/scenes/enemies/bat/audio/bat4.ogg"
+dest_files=[ "res://.import/bat4.ogg-bd753711a08a42c862ba2e8cc966aea3.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

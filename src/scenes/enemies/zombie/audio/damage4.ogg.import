@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/damage4.ogg-04d62a2a6fc59b2434c0517a28a173af.oggstr"
+
+[deps]
+
+source_file="res://src/scenes/enemies/zombie/audio/damage4.ogg"
+dest_files=[ "res://.import/damage4.ogg-04d62a2a6fc59b2434c0517a28a173af.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
