@@ -18,6 +18,11 @@ public class Cursor : Node2D
         );
     }
 
+    public void onTowerDeselected()
+    {
+        setSprite(null);
+    }
+
     public void setSprite(Texture texture) {
         sprite.Texture = texture;
     }

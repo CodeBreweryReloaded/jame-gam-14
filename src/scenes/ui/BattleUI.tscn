@@ -55,3 +55,4 @@ frame = 0
 [connection signal="TowerSelected" from="AngryTower" to="." method="onTowerSelected"]
 [connection signal="ButtonPressed" from="HappyTower" to="Cursor" method="setSprite"]
 [connection signal="TowerSelected" from="HappyTower" to="." method="onTowerSelected"]
+[connection signal="towerDeselected" from="." to="Cursor" method="onTowerDeselected"]

@@ -56,6 +56,7 @@ public class Main : Node2D
         try {
             UI.SpendMoney(tower.Cost);
             pedestal.SetTower(tower);
+            UI.onTowerSelected(null);
         } catch {
         }
     }
