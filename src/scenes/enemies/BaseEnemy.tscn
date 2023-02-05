@@ -8,6 +8,7 @@ z_index = 3
 z_as_relative = false
 collision_mask = 0
 script = ExtResource( 1 )
+DamageOnCastle = 1
 
 [node name="EnemySprite" type="AnimatedSprite" parent="."]
 playing = true

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/scenes/ui/button/next round/NextRoundButton.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://src/scenes/ui/button/AnimatedButton.tscn" type="PackedScene" id=2]
+
+[node name="AnimatedButton" instance=ExtResource( 2 )]
+Sprite = ExtResource( 1 )
+NormalAnimationName = "idle"
+HoverAnimationName = "hover"
+
+[node name="Box" parent="." index="1"]
+frames = ExtResource( 1 )
+animation = "hover"
+frame = 1

@@ -34,6 +34,9 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
     protected float healMultiplier = 1;
 
     [Export]
+    public int DamageOnCastle { get; set; }
+
+    [Export]
     public NodePath Target { get; set; }
 
     private Node2D _targetNode;
@@ -114,7 +117,7 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
             case "Freeze":
                 IsFrozen = false;
                 break;
-            
+
             case "Multiplier":
                 healMultiplier -= 0.2f;
                 break;
