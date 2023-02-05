@@ -12,15 +12,17 @@ public class MoneyCounter : AnimatedSprite
     public int Money {
         get => money;
         set {
-            money = value;
+            money = Math.Min(value, (int)Math.Pow(10, MaxDigitCount) - 1);
             text.Text = money.ToString();
         }
-    } 
+    }
+
+    public int MaxDigitCount { get; set; } = 5;
 
     public override void _Ready()
     {
         text = GetNode<Label>(textPath);
-        text.Text = money.ToString();
+        Money = Money;
     }
 
     public void spendMoney(int spent) {

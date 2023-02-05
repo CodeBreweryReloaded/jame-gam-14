@@ -53,7 +53,4 @@ public abstract class BaseProjectile : Node2D
         EmitSignal(nameof(Hit), Tower.Heal, Tower.Effect, Tower.EffectDuration);
         QueueFree();
     }
-
-
-
 }
