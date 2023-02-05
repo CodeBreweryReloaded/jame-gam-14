@@ -12,18 +12,29 @@ public class PierceTowerProjectile : BaseProjectile
     private int MaxPierce => ((PierceTower)Tower).Pierce;
     private int PierceCount = 0;
     private HashSet<Node2D> HitList = new HashSet<Node2D>();
+    private Vector2 targetVector = new Vector2();
+    private Lazy<VisibilityNotifier2D> lazyVisibility;
+    private VisibilityNotifier2D visibility => lazyVisibility.Value;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        Vector2 currentPosition = GlobalPosition;
         base._Ready();
+        if (IsInstanceValid(Target)) {
+            targetVector = Target.Position - currentPosition;
+        }
     }
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+    public override void _PhysicsProcess(float delta)
+    {
+        Vector2 nextVelocity = targetVector.Normalized() * Tower.ProjectileSpeed * delta;
+        GlobalPosition += nextVelocity;
+        if (!visibility.IsOnScreen())
+        {
+            QueueFree();
+        }
+    }
 
 
 public override void _on_Area2D_body_entered(Node2D body)

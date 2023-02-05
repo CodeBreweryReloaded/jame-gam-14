@@ -29,6 +29,8 @@ public abstract class BaseEnemy : KinematicBody2D
 
     protected float Speed => IsFrozen ? 0 : BaseSpeed * (float)Math.Pow(0.7f, SlowdownCount);
 
+    protected float healMultiplier = 1;
+
     [Export]
     protected NodePath Target;
 
@@ -50,7 +52,7 @@ public abstract class BaseEnemy : KinematicBody2D
     public virtual void onHit(int heal, string effect, float effectDuration){
         OverTimeEffectScene Ote = new OverTimeEffectScene();
 
-        Health += heal;
+        Health += (int)(heal * healMultiplier);
         if (Health >= MaxHealth)
         {
             QueueFree(); //TODO Mob cured
@@ -68,6 +70,10 @@ public abstract class BaseEnemy : KinematicBody2D
                 IsFrozen = true;
                 Ote.OverTimeEffect("Freeze", this, effectDuration);
                 break;
+
+            case "Multiplier":
+                healMultiplier += 0.2f;
+                break;
         }
 
     }
@@ -81,6 +87,10 @@ public abstract class BaseEnemy : KinematicBody2D
 
             case "Freeze":
                 IsFrozen = false;
+                break;
+            
+            case "Multiplier":
+                healMultiplier -= 0.2f;
                 break;
         }
     }
