@@ -111,4 +111,20 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
                 break;
         }
     }
+
+    private void Buff(){
+        BaseSpeed *= 1.2f;
+    }
+
+    private void DeBuff(){
+        BaseSpeed *= (1/1.2f);
+    }
+
+    private void OnEntered(){
+        Buff();
+    }
+
+    private void OnExited(){
+        DeBuff();
+    }
 }

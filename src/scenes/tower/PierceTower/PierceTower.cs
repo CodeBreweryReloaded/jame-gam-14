@@ -5,11 +5,6 @@ using System.Collections.Generic;
 
 public class PierceTower : BaseTower
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
-
-
     [Export]
     public int Pierce = 2;
     private HashSet<Node2D> HitList = new HashSet<Node2D>();
@@ -19,13 +14,7 @@ public class PierceTower : BaseTower
         base._Ready();
     }
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
-
-    protected override void LevelUp(){//TODO is level up a tower's responsibility?
+    protected override void LevelUp(){
 		Level++; 
 		Heal = (int) (Heal * LevelFactor);
         Pierce++;
