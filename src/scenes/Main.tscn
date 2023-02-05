@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/sprites/testbg-360.png" type="Texture" id=1]
 [ext_resource path="res://src/scenes/Main.cs" type="Script" id=2]
@@ -7,7 +7,11 @@
 [ext_resource path="res://src/scenes/castle/Castle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/scenes/enemies/bat/Bat.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/scenes/ui/BattleUI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/scenes/tower/MultiplierTower/MultiplierTower.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/scenes/tower/FreezeTower/FreezeTower.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/scenes/tower/SlowTower/SlowTower.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/scenes/tower/PierceTower/PierceTower.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/scenes/tower/HealTower/HealTower.tscn" type="PackedScene" id=12]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
@@ -49,3 +53,15 @@ Range = 150
 AttackSpeed = 60
 Effect = "Freeze"
 EffectDuration = 0.75
+
+[node name="PierceTower" parent="." instance=ExtResource( 11 )]
+position = Vector2( 201, 264 )
+
+[node name="MultiplierTower" parent="." instance=ExtResource( 8 )]
+position = Vector2( 248, 264 )
+
+[node name="HealTower" parent="." instance=ExtResource( 12 )]
+position = Vector2( 297, 263 )
+
+[node name="SlowTower" parent="." instance=ExtResource( 10 )]
+position = Vector2( 344, 263 )

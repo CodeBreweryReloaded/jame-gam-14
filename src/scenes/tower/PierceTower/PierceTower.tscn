@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/scenes/tower/BaseTower.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/scenes/tower/PierceTower/PierceTower.cs" type="Script" id=2]
 [ext_resource path="res://src/scenes/tower/PierceTower/PierceTowerProjectile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/scenes/tower/PierceTower/shield.png" type="Texture" id=4]
 
 [node name="PierceTower" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 Range = 8
 Heal = 7
+emblem = ExtResource( 4 )
 projectileScene = ExtResource( 3 )
 Pierce = 2
