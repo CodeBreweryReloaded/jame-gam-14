@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/scenes/enemies/BaseEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/scenes/enemies/FlagZombie/FlagZombie.cs" type="Script" id=2]
+
+[node name="FlagZombie" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+Range = 10
+colliderPath = NodePath("BuffRange")
+
+[node name="BuffRange" type="Area2D" parent="." index="2"]
+
+[connection signal="body_entered" from="BuffRange" to="." method="_on_BuffRange_body_entered"]
+[connection signal="body_exited" from="BuffRange" to="." method="_on_BuffRange_body_exited"]

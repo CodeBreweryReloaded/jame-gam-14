@@ -94,4 +94,20 @@ public abstract class BaseEnemy : KinematicBody2D
                 break;
         }
     }
+
+    private void Buff(){
+        BaseSpeed *= 1.2f;
+    }
+
+    private void DeBuff(){
+        BaseSpeed *= (10/12);
+    }
+
+    private void OnEntered(){
+        Buff();
+    }
+
+    private void OnExited(){
+        DeBuff();
+    }
 }
