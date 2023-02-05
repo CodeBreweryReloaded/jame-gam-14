@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/scenes/ui/BattleUI.cs" type="Script" id=1]
 [ext_resource path="res://src/scenes/ui/button/tower/TowerButton.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://src/scenes/ui/money/MoneyCounter.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/scenes/tower/MultiplierTower/MultiplierTower.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/scenes/tower/FreezeTower/FreezeTower.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/scenes/ui/button/next round/NextRoundButton.tscn" type="PackedScene" id=11]
 
 [node name="BattleUI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -51,6 +52,12 @@ CurrentHealth = 2
 [node name="MoneyCounter" parent="." instance=ExtResource( 8 )]
 position = Vector2( 14, 13 )
 frame = 1
+
+[node name="NextRoundButton" parent="." instance=ExtResource( 11 )]
+margin_left = 513.0
+margin_top = 308.0
+margin_right = 513.0
+margin_bottom = 308.0
 
 [connection signal="ButtonPressed" from="AngryTower" to="Cursor" method="setSprite"]
 [connection signal="TowerSelected" from="AngryTower" to="." method="onTowerSelected"]
