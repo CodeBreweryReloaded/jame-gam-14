@@ -4,6 +4,8 @@
 [ext_resource path="res://src/scenes/tower/baseTower.png" type="Texture" id=2]
 
 [node name="BaseTower" type="Node2D"]
+z_index = 4
+z_as_relative = false
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
