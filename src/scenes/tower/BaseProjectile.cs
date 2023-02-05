@@ -17,10 +17,12 @@ public abstract class BaseProjectile : Node2D
 
     private Lazy<VisibilityNotifier2D> lazyVisibility;
     protected VisibilityNotifier2D visibility => lazyVisibility.Value;
-    
-    public BaseProjectile() {
+
+    public BaseProjectile()
+    {
         lazyVisibility = new Lazy<VisibilityNotifier2D>(() => GetNode<VisibilityNotifier2D>(visibilityPath));
     }
+
 
     public override void _Ready(){
         Sprite sprite = new Sprite();
@@ -32,8 +34,9 @@ public abstract class BaseProjectile : Node2D
     public override void _PhysicsProcess(float delta)
     {
         Vector2 currentPosition = GlobalPosition;
-        if (IsInstanceValid(Target)) {
-            targetVector = Target.Position - currentPosition;
+        if (IsInstanceValid(Target))
+        {
+            targetVector = Target.GlobalPosition - currentPosition;
         }
         Vector2 nextVelocity = targetVector.Normalized() * Tower.ProjectileSpeed * delta;
         GlobalPosition += nextVelocity;

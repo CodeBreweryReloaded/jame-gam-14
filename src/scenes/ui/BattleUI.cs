@@ -3,7 +3,12 @@ using System;
 
 public class BattleUI : CanvasLayer
 {
-    private String currentTower;
+    private PackedScene currentTower;
+
+    [Signal]
+    delegate void towerSelected(PackedScene TowerType);
+    [Signal]
+    delegate void towerDeselected();
 
     public override void _Ready()
     {
@@ -17,6 +22,12 @@ public class BattleUI : CanvasLayer
             if (node is TowerButton tower) {
                 tower.Active = tower == towerButton;
             }
+        }
+
+        if (towerButton == null) {
+            EmitSignal(nameof(towerDeselected));
+        } else {
+            EmitSignal(nameof(towerSelected), towerButton.TowerType);
         }
     }
 }

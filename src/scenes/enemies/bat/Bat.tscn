@@ -12,6 +12,7 @@ BaseSpeed = 10.0
 
 [node name="EnemySprite" parent="." index="0"]
 frames = ExtResource( 3 )
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 shape = SubResource( 1 )
