@@ -10,23 +10,39 @@ public class BattleUI : CanvasLayer
     [Signal]
     delegate void towerDeselected();
 
+    private PlayerHealth playerHealth => GetNode<PlayerHealth>("PlayerHealth");
+
     public override void _Ready()
     {
-        
+
     }
 
-    public void onTowerSelected(TowerButton towerButton) {
+    public void Damage(int damage)
+    {
+        playerHealth.CurrentHealth -= damage;
+        if (playerHealth.CurrentHealth <= 0)
+        {
+            GetTree().ChangeScene("res://src/scenes/ui/GameOverScreen.tscn");
+        }
+    }
+
+    public void onTowerSelected(TowerButton towerButton)
+    {
         currentTower = towerButton?.TowerType;
         foreach (Node node in GetChildren())
         {
-            if (node is TowerButton tower) {
+            if (node is TowerButton tower)
+            {
                 tower.Active = tower == towerButton;
             }
         }
 
-        if (towerButton == null) {
+        if (towerButton == null)
+        {
             EmitSignal(nameof(towerDeselected));
-        } else {
+        }
+        else
+        {
             EmitSignal(nameof(towerSelected), towerButton.TowerType);
         }
     }

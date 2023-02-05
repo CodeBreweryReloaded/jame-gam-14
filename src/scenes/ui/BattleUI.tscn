@@ -45,7 +45,8 @@ margin_bottom = 1.0
 
 [node name="PlayerHealth" parent="." instance=ExtResource( 5 )]
 position = Vector2( 263, 11 )
-CurrentHealth = 10
+MaxHealth = 2
+CurrentHealth = 2
 
 [node name="MoneyCounter" parent="." instance=ExtResource( 8 )]
 position = Vector2( 14, 13 )

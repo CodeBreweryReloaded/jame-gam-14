@@ -48,14 +48,11 @@ public abstract class BaseProjectile : Node2D
         }
     }
 
-
     public virtual void _on_Area2D_body_entered(Node2D body)
     {
         Connect(nameof(Hit), body, "onHit");
         EmitSignal(nameof(Hit), Tower.Heal, Tower.Effect, Tower.EffectDuration);
         QueueFree();
     }
-
-
 
 }

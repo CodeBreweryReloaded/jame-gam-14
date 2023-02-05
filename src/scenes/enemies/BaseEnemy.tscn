@@ -6,6 +6,7 @@
 [node name="BaseEnemy" type="KinematicBody2D"]
 collision_mask = 0
 script = ExtResource( 1 )
+DamageOnCastle = 1
 
 [node name="EnemySprite" type="AnimatedSprite" parent="."]
 playing = true
