@@ -76,7 +76,7 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
         Health += (int)(heal * healMultiplier);
         if (Health >= MaxHealth)
         {
-            QueueFree(); //TODO Mob cured
+            Cured(); //TODO Mob cured
         }
 
         switch (effect)
