@@ -86,6 +86,10 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
         {
             Cured(); //TODO Mob cured
         }
+        else
+        {
+            enemyAudioPlayer.PlayHurt();
+        }
 
         switch (effect)
         {
@@ -109,6 +113,7 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
     }
 
     protected virtual void Cured() {
+        enemyAudioPlayer.PlayDeath();
         EmitSignal(nameof(OnCured), this);
         QueueFree();
     }
