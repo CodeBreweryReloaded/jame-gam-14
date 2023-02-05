@@ -18,8 +18,8 @@ public class Main : Node2D
         foreach (Node node in GetChildren())
         {
             if (node is Pedestal pedestal) {
-                Connect(nameof(towerSelected), pedestal, nameof(onTowerSelected));
-                Connect(nameof(towerDeselected), pedestal, nameof(onTowerDeselected));
+                Connect(nameof(towerSelected), pedestal, nameof(Pedestal.onTowerSelected));
+                Connect(nameof(towerDeselected), pedestal, nameof(Pedestal.onTowerDeselected));
             }
         }
     }

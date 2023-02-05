@@ -25,7 +25,7 @@ public class Pedestal : Node2D
         availability.Hide();
     }
 
-    private void onTowerSelected(PackedScene towerType) {
+    public void onTowerSelected(PackedScene towerType) {
         if (!reserved) {
             availability.Show();
             if (IsInstanceValid(tower)) {
@@ -41,7 +41,7 @@ public class Pedestal : Node2D
         }
     }
 
-    private void onTowerDeselected() {
+    public void onTowerDeselected() {
         availability.Hide();
     }
 
