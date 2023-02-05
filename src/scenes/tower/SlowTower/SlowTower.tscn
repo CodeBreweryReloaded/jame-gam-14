@@ -8,7 +8,9 @@
 [node name="SlowTower" instance=ExtResource( 1 )]
 position = Vector2( -1, 0 )
 script = ExtResource( 2 )
-Range = 8
+Cost = 60
+Range = 100
+AttackSpeed = 50
 LevelFactor = 1.4
 Heal = 5
 Effect = "Slow"
