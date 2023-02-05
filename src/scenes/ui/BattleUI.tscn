@@ -51,7 +51,7 @@ CurrentHealth = 2
 
 [node name="MoneyCounter" parent="." instance=ExtResource( 8 )]
 position = Vector2( 14, 13 )
-frame = 1
+frame = 0
 
 [node name="NextRoundButton" parent="." instance=ExtResource( 11 )]
 margin_left = 513.0

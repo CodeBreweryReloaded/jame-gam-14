@@ -60,7 +60,7 @@ BattleUIPath = NodePath("../BattleUI")
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 41, 240 )
 frames = SubResource( 5 )
-frame = 5
+frame = 6
 playing = true
 
 [node name="Spawner" parent="." instance=ExtResource( 8 )]
@@ -110,10 +110,6 @@ position = Vector2( 470, 170 )
 position = Vector2( 230, 250 )
 
 [node name="Cursor" parent="." instance=ExtResource( 13 )]
-pause_mode = 2
-position = Vector2( 349, 195 )
-
-[node name="Cursor" parent="Cursor" instance=ExtResource( 13 )]
 pause_mode = 2
 position = Vector2( 349, 195 )
 
