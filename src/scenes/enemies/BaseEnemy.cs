@@ -19,6 +19,8 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
         set => healthBar.Health = value;
     }
 
+    [Export]
+    public int Bounty { get; set; } = 50;
 
     [Export]
     protected float BaseSpeed = 1.0F;
@@ -59,6 +61,9 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
         healthBarLazy = new Lazy<HealthBar>(() => GetNode<HealthBar>("HealthBar"));
     }
 
+    [Signal]
+    public delegate void OnCured(BaseEnemy enemy);
+    
     public override void _PhysicsProcess(float delta)
     {
         base._PhysicsProcess(delta);
@@ -91,7 +96,11 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
                 healMultiplier += 0.2f;
                 break;
         }
+    }
 
+    protected virtual void Cured() {
+        QueueFree();
+        EmitSignal(nameof(OnCured), this);
     }
 
     private void OnEndEffect(string effect)
