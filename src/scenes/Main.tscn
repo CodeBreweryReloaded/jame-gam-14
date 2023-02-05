@@ -71,6 +71,7 @@ MaxHealth = 10
 Count = 10
 DurationInSeconds = 10.0
 CoolDownInSeconds = 5.0
+
 [node name="Pedestal2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 270, 130 )
 
