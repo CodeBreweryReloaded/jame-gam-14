@@ -99,8 +99,8 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
     }
 
     protected virtual void Cured() {
-        QueueFree();
         EmitSignal(nameof(OnCured), this);
+        QueueFree();
     }
 
     private void OnEndEffect(string effect)
