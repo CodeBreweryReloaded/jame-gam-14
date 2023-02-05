@@ -38,6 +38,7 @@ public class Pedestal : Node2D
             Color mod = tower.Modulate;
             mod.a = towerOpacity;
             tower.Modulate = mod;
+            tower.canShoot = false;
             tower.Hide();
             towerAnchor.AddChild(tower);
             tower.Position = new Vector2(0,0);
@@ -51,6 +52,7 @@ public class Pedestal : Node2D
 
     public void SetTower(BaseTower tower) {
         if (!reserved && IsInstanceValid(tower)) {
+            tower.canShoot = true;
             Color mod = tower.Modulate;
             mod.a = 1.0f;
             tower.Modulate = mod;

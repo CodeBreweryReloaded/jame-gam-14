@@ -10,7 +10,7 @@ public abstract class BaseTower : Node2D
     [Export]
     protected int Range = 10;
     [Export]
-    protected int AttackSpeed = 4;
+    public int AttackSpeed = 4;
     [Export]
     public float ProjectileSpeed = 50.0f;
     [Export]
@@ -27,6 +27,8 @@ public abstract class BaseTower : Node2D
     public int Cost { get; set; } = 50;
     [Export]
     private Texture emblem;
+
+    public bool canShoot= true;
 
     [Export(PropertyHint.ResourceType, "PackedScene")]
     protected PackedScene projectileScene;
@@ -64,6 +66,9 @@ public abstract class BaseTower : Node2D
 
     protected virtual void Shoot()
     {
+        if(!canShoot){
+            return;
+        }
         Node2D target = SearchTarget();
         if (target != null) {
             BaseProjectile proj = (BaseProjectile)projectileScene.Instance();
