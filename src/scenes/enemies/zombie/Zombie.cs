@@ -13,7 +13,7 @@ public class Zombie : BaseEnemy
     protected NodePath anchorPath;
 
     [Export(PropertyHint.ResourceType, "Double")]
-    private double randomDegrees = 90f;
+    private double randomDegrees = 70f;
 
     public override void _Ready()
     {
