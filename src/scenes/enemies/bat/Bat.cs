@@ -6,7 +6,13 @@ public class Bat : BaseEnemy
 
     public override void _Ready()
     {
-        //LookAt(GetNode<Node2D>(Target).Position);
+        enemyAudioPlayer = GetNode<EnemyAudioPlayer>("AudioStreamPlayer2D");
+        Timer timer = new Timer();
+        timer.Autostart = true;
+        timer.OneShot = false;
+        timer.WaitTime = AudioInterval;
+        timer.Connect("timeout", this, nameof(AudioQueue));
+        AddChild(timer);
     }
 
     public override void _PhysicsProcess(float delta)

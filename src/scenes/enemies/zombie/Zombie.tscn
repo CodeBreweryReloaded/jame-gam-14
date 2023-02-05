@@ -52,9 +52,6 @@ avoidance_enabled = true
 
 [node name="BuffRangeNode" type="Area2D" parent="." index="4"]
 
-[connection signal="body_entered" from="BuffRangeNode" to="." method="_on_BuffRangeNode_body_entered"]
-[connection signal="body_exited" from="BuffRangeNode" to="." method="_on_BuffRangeNode_body_exited"]
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="5"]
 volume_db = 2.761
 script = ExtResource( 10 )
@@ -62,3 +59,6 @@ HurtSounds = [ ExtResource( 7 ), ExtResource( 5 ) ]
 IdleSounds = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 9 ) ]
 DeathSounds = [ ExtResource( 7 ) ]
 RandomPitch = false
+
+[connection signal="body_entered" from="BuffRangeNode" to="." method="_on_BuffRangeNode_body_entered"]
+[connection signal="body_exited" from="BuffRangeNode" to="." method="_on_BuffRangeNode_body_exited"]

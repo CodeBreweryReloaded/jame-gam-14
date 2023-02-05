@@ -58,6 +58,8 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
     private Lazy<HealthBar> healthBarLazy;
 
     protected HealthBar healthBar => healthBarLazy.Value;
+    protected EnemyAudioPlayer enemyAudioPlayer;
+    protected float AudioInterval = 5.0f;
 
     public BaseEnemy()
     {
@@ -143,5 +145,10 @@ public abstract class BaseEnemy : KinematicBody2D, ITarget
 
     private void OnExited(){
         DeBuff();
+    }
+
+    protected void AudioQueue()
+    {
+        enemyAudioPlayer.PlayIdle();
     }
 }

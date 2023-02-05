@@ -6,7 +6,7 @@ public class Zombie : BaseEnemy
     protected NavigationAgent2D agent;
     protected Node2D anchor;
 
-    private float AudioInterval = 4.0f;
+
 
     [Export(PropertyHint.ResourceType, "NodePath")]
     protected NodePath agentPath;
@@ -16,9 +16,6 @@ public class Zombie : BaseEnemy
 
     [Export(PropertyHint.ResourceType, "Double")]
     private double randomDegrees = 70f;
-    private EnemyAudioPlayer enemyAudioPlayer;
-
-    private RandomEffectPlayer2D randomEffectPlayer2D;
 
     public override void _Ready()
     {
@@ -55,8 +52,5 @@ public class Zombie : BaseEnemy
     }
 
 
-    private void AudioQueue()
-    {
-        enemyAudioPlayer.PlayIdle();
-    }
+
 }
