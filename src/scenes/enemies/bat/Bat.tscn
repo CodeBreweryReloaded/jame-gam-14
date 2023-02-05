@@ -8,6 +8,7 @@
 extents = Vector2( 13, 4.25 )
 
 [node name="Bat" instance=ExtResource( 1 )]
+z_index = 5
 script = ExtResource( 2 )
 BaseSpeed = 10.0
 

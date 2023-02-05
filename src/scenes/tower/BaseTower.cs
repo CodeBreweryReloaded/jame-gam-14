@@ -77,14 +77,14 @@ public abstract class BaseTower : Node2D
 
     protected virtual Node2D SearchTarget()
     {
-		float distance = int.MaxValue;
-		Node2D closestEnemy = null;
+        float distance = int.MaxValue;
+        Node2D closestEnemy = null;
         foreach(Node2D Enemy in InRangeList){
-			if(Enemy.GlobalPosition.DistanceTo(this.GlobalPosition) < distance){
-				distance = Enemy.GlobalPosition.DistanceTo(this.GlobalPosition);
-				closestEnemy = Enemy;
-			}
-		}
+            if(Enemy.GlobalPosition.DistanceTo(this.GlobalPosition) < distance){
+                distance = Enemy.GlobalPosition.DistanceTo(this.GlobalPosition);
+                closestEnemy = Enemy;
+            }
+        }
         return closestEnemy;
     }
 
@@ -102,7 +102,7 @@ public abstract class BaseTower : Node2D
 
     protected virtual void _on_TowerRange_body_exited(Node2D body)
     {
-		InRangeList.Remove(body);
+        InRangeList.Remove(body);
     }
 
 }
