@@ -14,7 +14,9 @@ public class CompositeWave : Wave
     private int nextWave = 0;
     private Wave nextWaveInstance => waves[nextWave];
 
-    private int finishedWaveCounter = 0;
+    protected int FinishedWaveCounter { get; set; } = 0;
+
+    protected int WaveCount => waves.Count;
 
     [Export]
     private bool ActivateSimultaneously { get; set; } = false;
@@ -51,8 +53,8 @@ public class CompositeWave : Wave
     private void waveFinished()
     {
         EmitSignal(nameof(SubWaveFinished));
-        finishedWaveCounter++;
-        if (finishedWaveCounter >= waves.Count)
+        FinishedWaveCounter++;
+        if (FinishedWaveCounter >= waves.Count)
         {
             EmitSignal(nameof(WaveFinished));
         }

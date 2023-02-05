@@ -60,7 +60,7 @@ BattleUIPath = NodePath("../BattleUI")
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 41, 240 )
 frames = SubResource( 5 )
-frame = 7
+frame = 1
 playing = true
 
 [node name="Spawner" parent="." instance=ExtResource( 8 )]
@@ -78,11 +78,12 @@ ActivateSimultaneously = true
 [node name="Zombies" parent="Spawner/Wave1" instance=ExtResource( 10 )]
 EnemyScene = ExtResource( 4 )
 MaxHealth = 10
-Count = 3
+Count = 1
 DurationInSeconds = 5.0
 CoolDownInSeconds = 5.0
 
 [node name="Bats" parent="Spawner/Wave1" instance=ExtResource( 10 )]
+Enabled = false
 EnemyScene = ExtResource( 6 )
 MaxHealth = 15
 Count = 3
@@ -96,7 +97,7 @@ ActivateSimultaneously = true
 [node name="Zombies" parent="Spawner/Wave2" instance=ExtResource( 10 )]
 EnemyScene = ExtResource( 4 )
 MaxHealth = 10
-Count = 10
+Count = 1
 DurationInSeconds = 10.0
 CoolDownInSeconds = 5.0
 
