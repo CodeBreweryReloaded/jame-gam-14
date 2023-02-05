@@ -8,6 +8,7 @@
 [node name="MultiplierTower" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 Range = 75
+AttackSpeed = 100
 LevelFactor = 1.6
 Heal = 1
 Effect = "Multiplier"

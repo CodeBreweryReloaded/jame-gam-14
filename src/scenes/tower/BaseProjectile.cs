@@ -16,7 +16,7 @@ public abstract class BaseProjectile : Node2D
     private Vector2 targetVector = new Vector2();
 
     private Lazy<VisibilityNotifier2D> lazyVisibility;
-    private VisibilityNotifier2D visibility => lazyVisibility.Value;
+    protected VisibilityNotifier2D visibility => lazyVisibility.Value;
     
     public BaseProjectile() {
         lazyVisibility = new Lazy<VisibilityNotifier2D>(() => GetNode<VisibilityNotifier2D>(visibilityPath));
